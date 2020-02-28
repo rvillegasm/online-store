@@ -43,7 +43,8 @@ function foo()
     // function body
 }
 ```
-The following example is of a file that contains declarations without side effects; i.e., an example of what to emulate:
+The following example is of a file that contains declarations without
+side effects; i.e., an example of what to emulate:
 ```php
 <?php
 // declaration
@@ -83,7 +84,7 @@ class Foo
 ### Properties and Methods
 Properties and method names MUST always be declared in `camel case`.
 
-### Specific Coding Style Rules
+## Specific Coding Style Rules
 Every piece of PHP code MUST follow every single rule stipulated
 whithin the [SonarSource PHP rules](https://rules.sonarsource.com/php),
 specially the one related to **code smells**, as every pull request
@@ -93,6 +94,14 @@ pipeline that connects to SonarCloud.
 In order to help you detect possible errors early, you can
 install the SonarLint extension to your code editor or IDE, as
 it will run the scan locally and tell you the results.
+
+## Branching Methods
+This project works using the trunk-based development strategy.
+For every new feature you must make a new branch and then
+make a pull request in order to merge it to master.
+```bash
+$ git checkout -b feature/my-feature
+```
 
 ## Additional Notes
 For easy of readability, every piece of code and documentation
