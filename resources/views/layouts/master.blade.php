@@ -14,9 +14,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home.index') }}">
-                    {{ config('app.name', 'MY ONLINE STORE') }}
-                </a>
+                <a class="navbar-brand" href="{{ route('home.index') }}">MY ONLINE STORE</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -41,9 +39,7 @@
     </div>
 </body>
 
-
-
-<footer class="container py-5">
+<footer class="container py-4">
     <div class="row">
         <div class="col-6 col-md">
         <h5>About</h5>
