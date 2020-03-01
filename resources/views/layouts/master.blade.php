@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home.index') }}">MY ONLINE STORE</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -38,9 +38,10 @@
         </main>
     </div>
 </body>
-
-<footer class="container py-4">
-    <div class="row">
+<footer class="footer mt-auto py-3">
+    <div class="bg-dark py-4">
+    </div>
+    <div class="container row py-4 px-4">
         <div class="col-6 col-md">
         <h5>About</h5>
         <ul class="list-unstyled text-small">

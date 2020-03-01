@@ -66,7 +66,4 @@
         </div>
     </div>
 </div>
-<div class="bg-dark text-light py-4 justify-content-center">
-
-</div>
 @endsection
