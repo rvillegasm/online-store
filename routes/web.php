@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'HomeController@index')->name("home.index");
+Route::get('/watch/{category}', 'WatchController@listWatches')->name("watch.list");

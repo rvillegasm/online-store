@@ -20,7 +20,7 @@ class Watch extends Model
     private const PRICE = 'price';
     private const IMAGE = 'image';
     private const DESCRIPTION = 'description';
-    private const CATEGORY = 'id_category';
+    private const CATEGORY = 'category_id';
 
 
     protected $fillable = [Watch::NAME,Watch::QUANTITY,Watch::COLOR,Watch::BRAND,Watch::REFERENCE,Watch::PRICE,Watch::IMAGE,Watch::DESCRIPTION,Watch::CATEGORY];
