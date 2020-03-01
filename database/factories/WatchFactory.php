@@ -28,5 +28,6 @@ $factory->define(Watch::class, function (Faker $faker) {
         'price' => $faker->numberBetween(200, 9000),
         'image' => Str::random(20),
         'description' => Str::random(99),
+        'category_id' => $faker->numberBetween(1, 8),
     ];
 });
