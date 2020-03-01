@@ -84,6 +84,56 @@ class Foo
 ### Properties and Methods
 Properties and method names MUST always be declared in `camel case`.
 
+## Routes, Controllers and Views
+
+### Routes
+Every customer route MUST be named after the model that it interacts
+with (in singular). For example:
+```php
+Route::get('/watch/{categoryId}', '...')->name("...");
+```
+On the other hand, every admin route MUST specify that it is an admin
+related route, and then be named according to the model it interacts
+with. For example:
+```php
+Route::get('/admin/watch', '...')->name("...");
+```
+
+### Controllers
+Every controller that is related to a customer operation MUST go inside
+the `App/Http/Controllers/Customer` directory, while every controller
+related to an admin operation MUST go inside the 
+`App/Http/Controllers/Admin` directory.
+
+Every method must be named after the operation it intends to
+perform, without any type of redundancy. For example, avoid:
+```php
+class WatchController extends Controller
+{
+    public function listWatches($categoryId) {
+        ...
+    }
+}
+```
+Instead do it like this:
+```php
+class WatchController extends Controller
+{
+    public function list($categoryId) {
+        ...
+    }
+}
+```
+Also, **be specific when naming variables and parameters**. If what you
+intend to declare is a variable that represents a Category Id, name
+it categoryId, and not just category.
+
+### Views
+Views, just like controllers, MUST reside within their specific
+directories depending on their relationship with customer or
+admin operations, and ideally, they should have the same name as
+the controller method that calls them.
+
 ## Specific Coding Style Rules
 Every piece of PHP code MUST follow every single rule stipulated
 whithin the [SonarSource PHP rules](https://rules.sonarsource.com/php),
