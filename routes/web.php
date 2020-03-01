@@ -12,8 +12,15 @@
 */
 
 Route::get('/', 'HomeController@index')->name("home.index");
-Route::get('/watch/{category}', 'WatchController@listWatches')->name("watch.list");
-Route::get('/admin/watches', function () { //while the controllers are created
-    return view('admin.watch.index');
-});
+
+/*
+| CUSTOMER ROUTES
+*/
+Route::get('/watch/{categoryId}', 'Customer\WatchController@list')->name("watch.list");
+
+/*
+| ADMIN ROUTES
+*/
+Route::get('/admin/watch', 'Admin\WatchController@index')->name("admin.watch.index");
+
 Auth::routes();
