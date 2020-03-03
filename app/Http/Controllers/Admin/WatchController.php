@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Watch;
 
 class WatchController extends Controller
 {
@@ -17,7 +18,11 @@ class WatchController extends Controller
     }
 
     public function index(){
-        return view('admin.watch.index');
+        $data = [];
+        $data["title"] = "Watches";
+        $data["watches"] = Watch::with('category')->get();
+
+        return view('admin.watch.index')->with("data", $data);
     }
 }
 

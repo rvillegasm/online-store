@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section("title", $data["title"])
+
 @section('content')
 <!-- Content -->
 <div class="container mt-4">
@@ -9,7 +11,7 @@
         </div>
         <div class="card-body">
             <a class="btn btn-primary" href="#" role="button">Add Watch</a>
-            <table class="table mt-2">
+            <table class="table table-responsive-xl mt-2">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -23,16 +25,18 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($data["watches"] as $watch)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Apple Watch Series 3</td>
-                    <td>Apple</td>
-                    <td>AppleWS3</td>
-                    <td>Black</td>
-                    <td>Smart</td>
-                    <td><span class="badge badge-primary">$7.03</span></td>
-                    <td>100</td>
+                    <th scope="row">{{ $watch->getId() }}</th>
+                    <td>{{ $watch->getName() }}</td>
+                    <td>{{ $watch->getBrand() }}</td>
+                    <td>{{ $watch->getReference() }}</td>
+                    <td>{{ $watch->getColor() }}</td>
+                    <td>{{ $watch->category->getName() }}</td>
+                    <td><span class="badge badge-primary">{{ $watch->getPrice() }}</span></td>
+                    <td>{{ $watch->getQuantity() }}</td>
                   </tr>
+                @endforeach
                 </tbody>
               </table>
         </div>
