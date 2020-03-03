@@ -17,7 +17,7 @@ class Authentication
      */
     public function handle($request, Closure $next, $role = '')
     {
-        if (auth()->check() && auth()->user()->getRole() == User::ROLES[$role]) {
+        if (auth()->check() && auth()->user()->hasRole($role)) {
             return $next($request);
         }
 
