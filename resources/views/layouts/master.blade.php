@@ -34,7 +34,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('admin.watch.index') }}" role="button">Watches</a>
-                                    <a class="dropdown-item" href="" role="button">Categories</a>
+                                    <a class="dropdown-item" href="{{ route('admin.category.index') }}" role="button">Categories</a>
                                 </div>
                             </li>
                         @endif

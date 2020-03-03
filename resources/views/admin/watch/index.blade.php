@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
             <a class="btn btn-primary" href="#" role="button">Add Watch</a>
-            <table class="table table-responsive-xl mt-2">
+            <table class="table table-responsive-xl mt-2" aria-describedby="watches">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
