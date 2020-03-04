@@ -46,7 +46,7 @@
         </div>
       </div>
     <!-- Bestsellers -->
-    <h4 class="text-center my-4">{{ __('main.Bestsellers') }}</h4>
+    <h4 class="text-center my-4">{{ __('home.Bestsellers') }}</h4>
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
