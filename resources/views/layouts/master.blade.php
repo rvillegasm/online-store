@@ -33,8 +33,8 @@
                                     {{ __('home.Catalog') }}
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('admin.watch.index') }}" role="button">{{ __('watch.Watches') }}</a>
-                                    <a class="dropdown-item" href="{{ route('admin.category.index') }}" role="button">{{ __('watch.Categories') }}</a>
+                                    <a class="btn-light dropdown-item" href="{{ route('admin.watch.index') }}" role="button">{{ __('watch.Watches') }}</a>
+                                    <a class="btn-light dropdown-item" href="{{ route('admin.category.index') }}" role="button">{{ __('watch.Categories') }}</a>
                                 </div>
                             </li>
                         @endif

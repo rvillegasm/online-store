@@ -22,6 +22,12 @@ Route::get('/watch/{categoryId}', 'Customer\WatchController@list')->name("watch.
 | ADMIN ROUTES
 */
 Route::get('/admin/watch', 'Admin\WatchController@index')->name("admin.watch.index");
+Route::get('/admin/watch/create', 'Admin\WatchController@create')->name("admin.watch.create");
+Route::post('/admin/watch/store', 'Admin\WatchController@store')->name("admin.watch.store");
+
 Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
 
+/*
+| AUTHENTICATION ROUTES
+*/
 Auth::routes();

@@ -10,7 +10,7 @@
             {{ __('watch.Watches') }}
         </div>
         <div class="card-body">
-            <a class="btn btn-primary" href="#" role="button">{{ __('watch.Add Watch') }}</a>
+            <a class="btn btn-primary" href="{{ route('admin.watch.create') }}" role="button">{{ __('watch.Add Watch') }}</a>
             <table class="table table-responsive-xl mt-2" aria-describedby="watches">
                 <thead>
                   <tr>
