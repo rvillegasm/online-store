@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Category;
 
 /*
@@ -19,12 +20,29 @@ class Watch extends Model
     private const REFERENCE = 'reference';
     private const PRICE = 'price';
     private const IMAGE = 'image';
+    private const GENDER = 'gender';
     private const DESCRIPTION = 'description';
     private const CATEGORY = 'category_id';
 
 
-    protected $fillable = [Watch::NAME,Watch::QUANTITY,Watch::COLOR,Watch::BRAND,Watch::REFERENCE,Watch::PRICE,Watch::IMAGE,Watch::DESCRIPTION,Watch::CATEGORY];
+    protected $fillable = [
+        Watch::NAME,Watch::QUANTITY,Watch::COLOR,Watch::BRAND,Watch::REFERENCE,Watch::PRICE,Watch::IMAGE,Watch::GENDER,Watch::DESCRIPTION,Watch::CATEGORY
+    ];
 
+    public static function validate(Request $request) {
+        $request->validate([
+            "name" => "required",
+            "brand" => "required",
+            "reference" => "required",
+            "color" => "required",
+            "price" => "required|numeric|gt:0",
+            "quantity" => "required|numeric|gt:0",
+            "gender" => "required",
+            "description" => "required",
+            "category_id" => "required|numeric|gt:0",
+        ]);
+    }
+    
     public function getId()
     {
         return $this->attributes['id'];
