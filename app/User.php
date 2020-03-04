@@ -17,9 +17,7 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
+     * Values that can take the role attribute of a user
      *
      * @var array
      */
@@ -99,6 +97,11 @@ class User extends Authenticatable
     public function setRole($role)
     {
         $this->attributes['role'] = $role;
+    }
+
+    public function hasRole($role)
+    {
+        return $this->attributes['role'] == USer::ROLES[$role];
     }
 
     public function getCreatedAt()
