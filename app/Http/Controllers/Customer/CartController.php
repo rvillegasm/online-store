@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 
 use App\Watch;
 
-class CarController extends Controller
+class CartController extends Controller
 {
 
     public function index() {
         $data = [];
-        $data["title"] = "My Car";
+        $data["title"] = "My Cart";
 
-        return view('customer.car.index')->with("data", $data);
+        return view('customer.cart.index')->with("data", $data);
     }
 }
 
