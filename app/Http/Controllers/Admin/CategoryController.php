@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Watch;
+use App\Category;
 
-class WatchController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,10 +19,10 @@ class WatchController extends Controller
 
     public function index(){
         $data = [];
-        $data["title"] = "Watches";
-        $data["watches"] = Watch::with('category')->get();
+        $data["title"] = "Categories";
+        $data["categories"] = Category::all();
 
-        return view('admin.watch.index')->with("data", $data);
+        return view('admin.category.index')->with("data", $data);
     }
 }
 

@@ -1,38 +1,42 @@
 @extends('layouts.master')
 
+@section("title", $data["title"])
+
 @section('content')
 <!-- Content -->
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Watches
+            {{ __('watch.Watches') }}
         </div>
         <div class="card-body">
-            <a class="btn btn-primary" href="#" role="button">Add Watch</a>
-            <table class="table mt-2">
+            <a class="btn btn-primary" href="#" role="button">{{ __('watch.Add Watch') }}</a>
+            <table class="table table-responsive-xl mt-2" aria-describedby="watches">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Reference</th>
-                    <th scope="col">Color</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">{{ __('watch.Name') }}</th>
+                    <th scope="col">{{ __('watch.Brand') }}</th>
+                    <th scope="col">{{ __('watch.Reference') }}</th>
+                    <th scope="col">{{ __('watch.Color') }}</th>
+                    <th scope="col">{{ __('watch.Category') }}</th>
+                    <th scope="col">{{ __('watch.Price') }}</th>
+                    <th scope="col">{{ __('watch.Quantity') }}</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($data["watches"] as $watch)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Apple Watch Series 3</td>
-                    <td>Apple</td>
-                    <td>AppleWS3</td>
-                    <td>Black</td>
-                    <td>Smart</td>
-                    <td><span class="badge badge-primary">$7.03</span></td>
-                    <td>100</td>
+                    <th scope="row">{{ $watch->getId() }}</th>
+                    <td>{{ $watch->getName() }}</td>
+                    <td>{{ $watch->getBrand() }}</td>
+                    <td>{{ $watch->getReference() }}</td>
+                    <td>{{ $watch->getColor() }}</td>
+                    <td>{{ $watch->category->getName() }}</td>
+                    <td><span class="badge badge-primary">{{ $watch->getPrice() }}</span></td>
+                    <td>{{ $watch->getQuantity() }}</td>
                   </tr>
+                @endforeach
                 </tbody>
               </table>
         </div>

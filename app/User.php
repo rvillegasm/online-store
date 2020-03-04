@@ -101,7 +101,7 @@ class User extends Authenticatable
 
     public function hasRole($role)
     {
-        return $this->attributes['role'] == USer::ROLES[$role];
+        return $this->attributes['role'] == User::ROLES[$role];
     }
 
     public function getCreatedAt()

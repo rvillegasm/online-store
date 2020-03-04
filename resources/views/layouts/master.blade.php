@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,28 +27,37 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <!-- Future Left Side Links -->
+                        @if(Auth::check() && Auth::user()->hasRole('admin'))
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ __('home.Catalog') }}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('admin.watch.index') }}" role="button">{{ __('watch.Watches') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.category.index') }}" role="button">{{ __('watch.Categories') }}</a>
+                                </div>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}" role="button">Login</a>
+                                <a class="nav-link" href="{{ route('login') }}" role="button">{{ __('auth.Login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}" role="button">Register</a>
+                                <a class="nav-link" href="{{ route('register') }}" role="button">{{ __('auth.Register') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->getName() }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu-right">
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn-light dropdown-item">logout</button>
+                                        <button type="submit" class="btn-light dropdown-item">{{ __('auth.Logout') }}</button>
                                     </form>
                                 </div>
                             </li>
@@ -70,10 +79,9 @@
         <div class="col-6 col-md">
         <h5>About</h5>
         <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Team</a></li>
-            <li><a class="text-muted" href="#">Locations</a></li>
-            <li><a class="text-muted" href="#">Privacy</a></li>
-            <li><a class="text-muted" href="#">Terms</a></li>
+            <li><a class="text-muted" href="#">{{ __('home.Team') }}</a></li>
+            <li><a class="text-muted" href="#">{{ __('home.Privacy') }}</a></li>
+            <li><a class="text-muted" href="#">{{ __('home.Terms') }}</a></li>
         </ul>
         </div>
     </div>

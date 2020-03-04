@@ -22,5 +22,6 @@ Route::get('/watch/{categoryId}', 'Customer\WatchController@list')->name("watch.
 | ADMIN ROUTES
 */
 Route::get('/admin/watch', 'Admin\WatchController@index')->name("admin.watch.index");
+Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
 
 Auth::routes();

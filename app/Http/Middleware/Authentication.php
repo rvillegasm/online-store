@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\User;
 use App\Providers\RouteServiceProvider;
 
 class Authentication
