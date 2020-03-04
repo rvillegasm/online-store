@@ -17,18 +17,16 @@
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
     </a>
 </div>
 
 <!-- Content -->
 <div class="container mt-4">
     <!-- Categories -->
-    <h4 class="text-center my-4">Categories</h4>
+    <h4 class="text-center my-4">{{ __('watch.Categories') }}</h4>
     <div class="row row-cols-2 row-cols-md-5 justify-content-center categories">
         <div class="col mb-4">
           <div class="card">
@@ -48,7 +46,7 @@
         </div>
       </div>
     <!-- Bestsellers -->
-    <h4 class="text-center my-4">Bestsellers</h4>
+    <h4 class="text-center my-4">{{ __('main.Bestsellers') }}</h4>
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
@@ -58,7 +56,7 @@
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-dark">Add to cart</button>
+                    <button type="button" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
                 </div>
                 </div>
             </div>

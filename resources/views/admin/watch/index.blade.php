@@ -7,21 +7,21 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Watches
+            {{ __('watch.Watches') }}
         </div>
         <div class="card-body">
-            <a class="btn btn-primary" href="#" role="button">Add Watch</a>
+            <a class="btn btn-primary" href="#" role="button">{{ __('watch.Add Watch') }}</a>
             <table class="table table-responsive-xl mt-2" aria-describedby="watches">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Reference</th>
-                    <th scope="col">Color</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Quantity</th>
+                    <th scope="col">{{ __('watch.Name') }}</th>
+                    <th scope="col">{{ __('watch.Brand') }}</th>
+                    <th scope="col">{{ __('watch.Reference') }}</th>
+                    <th scope="col">{{ __('watch.Color') }}</th>
+                    <th scope="col">{{ __('watch.Category') }}</th>
+                    <th scope="col">{{ __('watch.Price') }}</th>
+                    <th scope="col">{{ __('watch.Quantity') }}</th>
                 </tr>
                 </thead>
                 <tbody>

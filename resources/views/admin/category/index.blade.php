@@ -7,16 +7,16 @@
 <div class="container mt-4">
     <div class="card">
         <div class="card-header">
-            Categories
+          {{ __('watch.Categories') }}
         </div>
         <div class="card-body">
-            <a class="btn btn-primary" href="#" role="button">Add Category</a>
+            <a class="btn btn-primary" href="#" role="button">{{ __('watch.Add Category') }}</a>
             <table class="table table-responsive-xl mt-2" aria-describedby="categories">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">{{ __('watch.Name') }}</th>
+                    <th scope="col">{{ __('watch.Description') }}</th>
                 </tr>
                 </thead>
                 <tbody>
