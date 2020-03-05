@@ -18,7 +18,7 @@
                 <input type="number" class="form-control" value="1" min="1">
               </div>
               <div class="col-md-2 mt-4 pt-1">
-                <b>$12</b>
+                <strong>$12</strong>
               </div>
               <div class="col-md-2 mt-4">
                 <a href="" class="btn btn-danger btn-block ml-auto">{{ __('customer.Delete') }}</a>
