@@ -42,6 +42,11 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="btn btn-outline-dark btn-block" href="{{ route('cart.index') }}" role="button">
+                                {{ __('home.My Cart') }} <span class="badge badge-secondary">0</span>
+                            </a>
+                        </li>
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}" role="button">{{ __('auth.Login') }}</a>
