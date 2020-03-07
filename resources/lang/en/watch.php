@@ -15,6 +15,11 @@ return [
     'Reference' => 'Reference',
     'Color' => 'Color',
     'Price' => 'Price',
+    'PriceAsc' => 'Price Ascending',
+    'PriceDesc' => 'Price Descending',
+    'byName'  => 'Name',
+    'orderBy'  => 'Order By',
+    'relevance' => 'Relevance',
     'Quantity' => 'Quantity',
     'Image' => 'Image',
     'Gender' => 'Gender',
@@ -26,4 +31,5 @@ return [
     'Create' => 'Create',
     'Add Category' =>  'Add Category',
     'Add to cart' => 'Add to cart',
+    'ideal' => 'Ideal For',
 ];

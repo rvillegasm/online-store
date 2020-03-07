@@ -16,7 +16,8 @@ Route::get('/', 'HomeController@index')->name("home.index");
 /*
 | CUSTOMER ROUTES
 */
-Route::get('/watch/{categoryId}', 'Customer\WatchController@list')->name("watch.list");
+Route::get('/watch/list/{categoryName}/{filter}', 'Customer\WatchController@list')->name("watch.list");
+Route::get('/watch/show/{watchId}', 'Customer\WatchController@show')->name("watch.show");
 Route::get('/cart', 'Customer\CartController@index')->name("cart.index");
 Route::get('/cart/checkout', 'Customer\CartController@checkout')->name("cart.checkout");
 

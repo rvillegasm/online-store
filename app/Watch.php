@@ -126,6 +126,16 @@ class Watch extends Model
         $this->attributes[Watch::IMAGE] = $image;
     }
 
+    public function getGender()
+    {
+        return $this->attributes[Watch::GENDER];
+    }
+
+    public function setGender($gender)
+    {
+        $this->attributes[Watch::GENDER] = $gender;
+    }
+
     public function getDescription()
     {
         return $this->attributes[Watch::DESCRIPTION];
@@ -155,7 +165,6 @@ class Watch extends Model
     {
         return $this->hasMany(Item::class);
     }
-
 }
 
 ?>
