@@ -14,34 +14,28 @@ class WatchController extends Controller
         $data["title"] = "Categoria de Reloj";
         $data["watchesCategory"] = $categoryName;
 
-        if($filter == "all") {
-            $data["watch"] = Watch::with('category')->whereHas('category', function ($query) use ($categoryName) {
-                $query->where('name', $categoryName);
-            })
-            ->simplePaginate(3);
-        }
-        elseif($filter == "name") {
-            $data["watch"] = Watch::with('category')->whereHas('category', function ($query) use ($categoryName) {
-                $query->where('name', $categoryName);
-            })
-            ->orderBy('name')
-            ->simplePaginate(3);
-        }
-        elseif($filter == "priceAsc") {
-            $data["watch"] = Watch::with('category')->whereHas('category', function ($query) use ($categoryName) {
-                $query->where('name', $categoryName);
-            })
-            ->orderBy('price', 'asc')
-            ->simplePaginate(3);
-        }
-        elseif($filter == "priceDesc") {
-            $data["watch"] = Watch::with('category')->whereHas('category', function ($query) use ($categoryName) {
-                $query->where('name', $categoryName);
-            })
-            ->orderBy('price', 'desc')
-            ->simplePaginate(3);
+        $watches = Watch::with('category')->whereHas('category', function ($query) use ($categoryName) {
+            $query->where('name', $categoryName);
+        });
+
+        switch($filter){
+            case "all":
+                $watches = $watches->simplePaginate(3);
+                break;
+            case "name":
+                $watches = $watches->orderBy('name')->simplePaginate(3);
+                break;
+            case "priceAsc":
+                $watches = $watches->orderBy('price', 'asc')->simplePaginate(3);
+                break;
+            case "priceDesc":
+                $watches = $watches->orderBy('price', 'desc')->simplePaginate(3);
+                break;
+            default:
+                break;
         }
 
+        $data["watch"] = $watches;
         return view('customer.watch.list')->with("data", $data);
     }
 
