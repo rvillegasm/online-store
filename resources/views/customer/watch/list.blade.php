@@ -18,7 +18,7 @@
     </div>
 
     <div class="row">
-        @foreach($data["watch"] as $watch)
+        @foreach($data["watches"] as $watch)
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
                 <img class="card-img-top" src="{{ asset('img/watch1.jpg') }}" alt="">
@@ -35,6 +35,6 @@
         </div>
         @endforeach
     </div>
-    {{ $data["watch"]->links() }}
+    {{ $data["watches"]->links() }}
 </div>
 @endsection
