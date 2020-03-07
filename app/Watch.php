@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+
 use App\Category;
+use App\Item;
 
 /*
     Watch Model Class
@@ -157,6 +159,11 @@ class Watch extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 }
 

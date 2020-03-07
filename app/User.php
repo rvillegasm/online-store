@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use App\Order;
+
 /*
     Watch Model Class
     Attributes : id, name, email, email_verified_at, password,
@@ -112,5 +114,10 @@ class User extends Authenticatable
     public function getUpdatedAt()
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }
