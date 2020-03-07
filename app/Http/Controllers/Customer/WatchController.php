@@ -35,7 +35,7 @@ class WatchController extends Controller
                 break;
         }
 
-        $data["watch"] = $watches;
+        $data["watches"] = $watches;
         return view('customer.watch.list')->with("data", $data);
     }
 
