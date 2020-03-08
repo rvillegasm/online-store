@@ -59,11 +59,14 @@
             <div class="card mb-4 shadow-sm">
                 <img class="card-img-top" src="{{ asset('img/watch1.jpg') }}" alt="">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}} </a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
+                    <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}}</a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
                     <p class="card-text">{{$watch->getDescription()}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                          <form action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                          </form>
                         </div>
                     </div>
                 </div>
