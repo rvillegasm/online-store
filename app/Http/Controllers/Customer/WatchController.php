@@ -9,6 +9,13 @@ use App\Watch;
 class WatchController extends Controller
 {
 
+    /**
+     * List all watches
+     *
+     * @param  String $categoryName 
+     * @param  String $filter
+     * @return view
+     */
     public function list($categoryName, $filter) {
         $data = [];
         $data["title"] = "Categoria de Reloj";
@@ -40,10 +47,16 @@ class WatchController extends Controller
         return view('customer.watch.list')->with("data", $data);
     }
 
+    /**
+     * Show a single watch
+     *
+     * @param  Integer $id
+     * @return view
+     */
     public function show($id)
     {
         $data = []; 
-        $watch = Watch::findOrFail($id);
+        $watch = Watch::with('comments')->findOrFail($id);
         $data["watch"] = $watch;
         
         return view('customer.watch.show')->with("data",$data);
