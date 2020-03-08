@@ -35,3 +35,8 @@ Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.cat
 | AUTHENTICATION ROUTES
 */
 Auth::routes();
+
+/*
+| SESSION ROUTES
+*/
+Route::get('/session/put/{watchId}', 'SessionController@put')->name("session.put");
