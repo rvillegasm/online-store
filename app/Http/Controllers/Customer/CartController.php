@@ -12,11 +12,20 @@ class CartController extends Controller
 {
     private const WATCHES = 'watches';
 
+    /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('role:customer')->except('index');
+    }
+
     public function index()
     {
         $data = [];
         $data["title"] = "My Cart";
-        
         // get the list of watches from the session
         $sessionWatches = [];
         if (Session::has(CartController::WATCHES)) {

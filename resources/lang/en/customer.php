@@ -16,6 +16,8 @@ return [
     'Zip' => 'Zip',
     'Total' => 'Total',
     'Delete' => 'Delete',
+    'Your cart is empty' => 'Your cart is empty',
+    'Remember login' => 'Remember to log in to continue',
     'Finalize' => 'Finalize',
 
 ];

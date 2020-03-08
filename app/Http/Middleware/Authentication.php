@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Providers\RouteServiceProvider;
 
 class Authentication
 {
@@ -20,6 +19,6 @@ class Authentication
             return $next($request);
         }
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/login');
     }
 }

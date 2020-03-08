@@ -21,10 +21,13 @@
                     <h3><span class="badge badge-light">{{$data["watch"]->getReference()}}</span></h3>
                     <p class="card-text">
                         {{$data["watch"]->getDescription()}}
-                        <br><strong>{{ __('watch.ideal') }}: </strong>{{$data["watch"]->getGender()}}</br>
+                        <strong>{{ __('watch.ideal') }}: </strong>{{$data["watch"]->getGender()}}
                     </p>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                        <form action="{{ route('session.put', ['watchId' => $data["watch"]->getId()]) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                        </form>
                     </div>
                 </div>
             </div>
