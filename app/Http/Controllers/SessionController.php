@@ -19,6 +19,21 @@ class SessionController extends Controller
 
         return back();
     }
+
+    public function delete($watchId)
+    {
+        if (Session::has(SessionController::WATCHES))
+        {
+            $watches = Session::pull(SessionController::WATCHES, []);
+            if (($key = array_search($watchId, $watches)) !== false)
+            {
+                unset($watches[$key]);
+            }
+            Session::put(SessionController::WATCHES, $watches);
+        }
+
+        return back();
+    }
 }
 
 ?>

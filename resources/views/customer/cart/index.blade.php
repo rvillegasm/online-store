@@ -22,7 +22,10 @@
                 <strong>{{ $watch->getPrice() }} {{ __('watch.Unit') }} </strong>
               </div>
               <div class="col-md-2 mt-4">
-                <a href="" class="btn btn-danger btn-block ml-auto">{{ __('customer.Delete') }}</a>
+                <form action="{{ route('session.delete', ['watchId' => $watch->getId()]) }}" method="POST">
+                  @csrf
+                  <button type="submit" class="btn btn-danger btn-block ml-auto">{{ __('customer.Delete') }}</button>
+                </form>
               </div>
             </div>
           </div>

@@ -22,12 +22,7 @@ class CartController extends Controller
         if (Session::has(CartController::WATCHES)) {
             $sessionWatches = Session::get(CartController::WATCHES);
         }
-        // query for the models (using where(array))
-        $watches = Watch::where(function ($query) use ($sessionWatches) {
-            foreach ($sessionWatches as $watchId) {
-                $query->orWhere('id', $watchId);
-            }
-        })->get();
+        $watches = Watch::find($sessionWatches);
         $data[CartController::WATCHES] = $watches;
 
         return view('customer.cart.index')->with("data", $data);

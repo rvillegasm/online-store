@@ -31,7 +31,7 @@
                     <p class="card-text">{{$watch->getDescription()}}</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <form action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="get">
+                            <form action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
                             </form>

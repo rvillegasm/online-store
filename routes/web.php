@@ -40,4 +40,5 @@ Auth::routes();
 /*
 | SESSION ROUTES
 */
-Route::get('/session/put/{watchId}', 'SessionController@put')->name("session.put");
+Route::post('/session/put/{watchId}', 'SessionController@put')->name("session.put");
+Route::post('/session/delete/{watchId}', 'SessionController@delete')->name("session.delete");
