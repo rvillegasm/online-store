@@ -67,7 +67,7 @@ class Item extends Model
 
     public function watch()
     {
-        return $this->hasOne(Watch::class);
+        return $this->belongsTo(Watch::class);
     }
 }
 

@@ -20,7 +20,7 @@ class WatchController extends Controller
 
         switch($filter){
             case "all":
-                $watches = $watches->simplePaginate(3);
+                $watches = $watches->orderBy('id', 'desc')->simplePaginate(3);
                 break;
             case "name":
                 $watches = $watches->orderBy('name')->simplePaginate(3);
@@ -32,6 +32,7 @@ class WatchController extends Controller
                 $watches = $watches->orderBy('price', 'desc')->simplePaginate(3);
                 break;
             default:
+                $watches = $watches->orderBy('id', 'desc')->simplePaginate(3);
                 break;
         }
 
