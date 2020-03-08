@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Item;
+use App\Comment;
 
 /*
     Watch Model Class
@@ -164,6 +165,11 @@ class Watch extends Model
     public function items()
     {
         return $this->hasMany(Item::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
 

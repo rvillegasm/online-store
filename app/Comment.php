@@ -3,12 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Watch;
 
 class Comment extends Model
 {
     //attributes id, description, watch_id, created_at, updated_at
     protected $fillable = ['description', 'watch_id'];
+
+    public static function validate(Request $request) {
+        $request->validate([
+            "description" => "required",
+            "watch_id" => "required|numeric|gt:0",
+        ]);
+    }
 
     public function getId()
     {
@@ -38,6 +46,11 @@ class Comment extends Model
     public function setWatchId($pId)
     {
         $this->attributes['watch_id'] = $pId;
+    }
+
+    public function getDate()
+    {
+        return $this->attributes['created_at'];
     }
 
     public function watch(){

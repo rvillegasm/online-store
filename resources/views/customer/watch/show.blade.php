@@ -29,6 +29,33 @@
                             <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
                         </form>
                     </div>
+                    <br />
+                    <div class="clearfix"></div>
+                    <hr>
+                    <!-- Add Comment -->
+                    <form class="panel-body" method="POST" action="{{ route('comment.store' , ['watchId' => $data['watch']->getId()]) }}">
+                        @csrf
+                        <input class="form-control" type="text" name="description" placeholder="{{ __('comment.commentPlaceholder') }}" />
+                        <input type="hidden" name="watch_id" value="{{ $data['watch']->getId() }}" />
+                        <input type="submit" class="btn btn-dark btn-sm btn-block" value="{{ __('comment.submitComment') }}">
+                    </form>
+                    <!-- Comments -->
+                    <div class="clearfix"></div>
+                    </br>
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                        @foreach($data["watch"]->comments as $comment)
+                            <li class="list-group-item">
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                        <p>{{ $comment->getDescription() }}</p>
+                                        <footer class="blockquote-footer"> {{ __('comment.in') }} <cite> {{ $comment->getDate() }} </cite></footer>
+                                    </blockquote>
+                                </div>
+                            </li>
+                        @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

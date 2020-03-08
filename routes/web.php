@@ -21,6 +21,7 @@ Route::get('/watch/list/{categoryName}/{filter}', 'Customer\WatchController@list
 Route::get('/watch/show/{watchId}', 'Customer\WatchController@show')->name("watch.show");
 Route::get('/cart', 'Customer\CartController@index')->name("cart.index");
 Route::get('/cart/checkout', 'Customer\CartController@checkout')->name("cart.checkout");
+Route::post('/watch/show/{watchId}/storeComment', 'Customer\CommentController@store')->name("comment.store");
 
 
 /*
