@@ -5,16 +5,16 @@
 @section('content')
 
 <!-- Content -->
-<div class="container">
+<div class="container mt-4">
 
-    <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" value="">{{ __('watch.orderBy') }}</button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'all']) }}">{{ __('watch.relevance') }}</a></li>
-            <li><a href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'name']) }}">{{ __('watch.byName') }}</a></li>
-            <li><a href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'priceAsc']) }}">{{ __('watch.PriceAsc') }}</a></li>
-            <li><a href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'priceDesc']) }}">{{ __('watch.PriceDesc') }}</a></li>
-        </ul>
+    <div class="dropdown mb-2">
+        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" value="">{{ __('watch.orderBy') }}</button>
+        <div class="dropdown-menu" role="menu">
+            <a class="dropdown-item" href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'all']) }}">{{ __('watch.relevance') }}</a>
+            <a class="dropdown-item" href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'name']) }}">{{ __('watch.byName') }}</a>
+            <a class="dropdown-item" href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'priceAsc']) }}">{{ __('watch.PriceAsc') }}</a>
+            <a class="dropdown-item" href="{{ route('watch.list' , ['categoryName' => $data['watchesCategory'], 'filter' => 'priceDesc']) }}">{{ __('watch.PriceDesc') }}</a>
+        </div>
     </div>
 
     <div class="row">
