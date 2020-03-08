@@ -12,7 +12,7 @@ class WatchesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Watch::class,8)->create();
+        factory(Watch::class,20)->create();
     }
 }
 

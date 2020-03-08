@@ -5,13 +5,13 @@
 @section('content')
 
 <!-- Content -->
-<div class="container">
+<div class="container mt-4">
     <div class="card mb-3">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <div class="card">
-                    <img class="img-thumbnail" src="{{ asset('img/watch1.jpg') }}" alt="Card Back">
-                    <img class="img-thumbnail" src="{{ asset('img/watch2.jpg') }}" class="img-top" alt="Card Front">
+                <div class="card px-1">
+                    <img class="img-thumbnail my-1" src="{{ asset('img/watch1.jpg') }}" alt="Card Back">
+                    <img class="img-thumbnail my-1" src="{{ asset('img/watch2.jpg') }}" alt="Card Front">
                 </div>
             </div>
             <div class="col-md-8">
