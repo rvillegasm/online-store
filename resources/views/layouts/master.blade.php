@@ -48,7 +48,7 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="btn btn-outline-dark btn-block" href="{{ route('cart.index') }}" role="button">
-                                {{ __('home.My cart') }} <span class="badge badge-secondary">0</span>
+                                {{ __('home.My cart') }} <span class="badge badge-secondary">{{ count(array_unique(session()->get('watches'))) }}</span>
                             </a>
                         </li>
                         @guest

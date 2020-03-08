@@ -32,4 +32,5 @@ return [
     'Add Category' =>  'Add Category',
     'Add to cart' => 'Add to cart',
     'ideal' => 'Ideal For',
+    'Unit' => 'Per Unit',
 ];
