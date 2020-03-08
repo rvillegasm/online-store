@@ -16,4 +16,8 @@ return [
     'Team' => 'Team',
     'Privacy' => 'Privacy',
     'Terms' => 'Terms',
+    'Search' => 'Search',
+    'instantSearch' => 'Go instantly to your watch!',
+    'watch' => 'watch',
+    'enterWatchName' => 'Enter Watch Name',
 ];

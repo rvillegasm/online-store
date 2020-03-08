@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name("home.index");
+Route::post('/search', 'HomeController@search')->name("home.search");
 
 /*
 | CUSTOMER ROUTES

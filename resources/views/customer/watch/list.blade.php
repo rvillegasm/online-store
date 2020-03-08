@@ -7,6 +7,10 @@
 <!-- Content -->
 <div class="container mt-4">
 
+    <blockquote class="text-center">
+        <h1 class="display-4">{{$data["watchesCategory"]}} {{ __('watch.Category') }} </h1>
+    </blockquote>
+
     <div class="dropdown mb-2">
         <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" value="">{{ __('watch.orderBy') }}</button>
         <div class="dropdown-menu" role="menu">

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
+
 use App\Category;
 use App\Watch;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,5 +25,14 @@ class HomeController extends Controller
         $data["watches"] = Watch::find($watchesIds);
 
         return view('home.index')->with("data", $data);
+    }
+
+    public function search(Request $request){
+        try {
+            $watchObject = Watch::where('name', $request->watch)->firstOrFail();
+            return redirect()->route('watch.show' , ['watchId' => $watchObject->getId()]);
+        } catch (ModelNotFoundException $exception) {
+            return redirect()->route('home.index')->with('Not Found','Watch not found!');;
+        }   
     }
 }

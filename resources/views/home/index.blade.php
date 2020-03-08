@@ -3,28 +3,38 @@
 @section('content')
 <!-- Banner -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    </ol>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-        <img src="{{ asset('img/banner1.jpg') }}" class="d-block w-100" alt="">
-        </div>
-        <div class="carousel-item">
-        <img src="{{ asset('img/banner2.jpg') }}" class="d-block w-100" alt="">
-        </div>
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{{ asset('img/banner1.jpg') }}" class="d-block w-100" alt="">
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    </a>
+    <div class="carousel-item">
+      <img src="{{ asset('img/banner2.jpg') }}" class="d-block w-100" alt="">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </a>
 </div>
 
 <!-- Content -->
 <div class="container mt-4">
+  <!-- Search Section -->
+  <h4 class="text-center my-4">{{ __('home.instantSearch') }}</h4>
+  <form class="input-group mb-3" method="POST" action="{{ route('home.search') }}">
+    @csrf
+    <input type="text" class="form-control" placeholder="{{ __('home.enterWatchName') }}" name="{{ __('home.watch') }}">
+    <div class="input-group-append">
+      <input type="submit" class="btn btn-dark" value="{{ __('home.Search') }}" role="button">
+    </div>
+  </form>
+  @include('util.message')
     <!-- Categories -->
     <h4 class="text-center my-4">{{ __('watch.Categories') }}</h4>
     <div class="row row-cols-2 row-cols-md-5 justify-content-center categories">
@@ -61,5 +71,6 @@
         </div>
       @endforeach
     </div>
+  </div>
 </div>
 @endsection
