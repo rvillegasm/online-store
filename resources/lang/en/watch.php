@@ -34,4 +34,5 @@ return [
     'ideal' => 'Ideal For',
     'Unit' => 'Per Unit',
     'TotalUnits' => 'Total Units',
+    'Generate Excel' => 'Generate Excel',
 ];

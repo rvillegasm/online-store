@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Watch;
 use App\Category;
+use App\Exports\WatchesExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WatchController extends Controller
 {
@@ -65,6 +67,11 @@ class WatchController extends Controller
         $message["text"] = "Watch created successfully";
 
         return redirect()->route('home.index')->with("message", $message);
+    }
+
+    public function export() 
+    {
+        return Excel::download(new WatchesExport, 'watches.xlsx');
     }
 }
 
