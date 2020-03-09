@@ -8,7 +8,7 @@ use App\User;
 
 class Order extends Model 
 {
-    private const DATE_SHIPPED = 'dateShipped';
+    private const DATE_SHIPPED = 'date_shipped';
     private const STATUS = 'status';
     private const USER_ID = 'user_id';
 

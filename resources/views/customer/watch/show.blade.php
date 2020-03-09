@@ -24,9 +24,18 @@
                         <strong>{{ __('watch.ideal') }}: </strong>{{$data["watch"]->getGender()}}
                     </p>
                     <div class="btn-group">
-                        <form action="{{ route('session.put', ['watchId' => $data["watch"]->getId()]) }}" method="POST">
+                        <form action="{{ route('session.put', ['watchId' => $data['watch']->getId()]) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        Quantity:<input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $data['watch']->getQuantity() }}">
+                                    </div>
+                                    <div class="col-sm">
+                                        <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <br />

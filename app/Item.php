@@ -7,8 +7,8 @@ use App\Watch;
 
 class Item extends Model 
 {
-    private const PRODUCT_QUANTITY = 'productQuantity';
-    private const SUB_TOTAL = 'subTotal';
+    private const PRODUCT_QUANTITY = 'product_quantity';
+    private const SUB_TOTAL = 'sub_total';
     private const WATCH_ID = 'watch_id';
     private const ORDER_ID = 'order_id';
 

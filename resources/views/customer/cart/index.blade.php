@@ -3,8 +3,9 @@
 @section('content')
 <!-- Content -->
 <div class="container mt-4">
+  @include('util.message')
   @if ($data['watches']->count())
-    @foreach($data['watches'] as $watch)
+    @for($i = 0; $i < count($data['watches']); $i++)
       <div class="card mb-1">
           <div class="row no-gutters">
             <div class="col-md-2">
@@ -13,17 +14,17 @@
             <div class="col-md-10">
               <div class="card-body d-flex justify-content-between lh-condensed row">
                 <div class="col-md-5">
-                  <h5 class="my-0"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}}</a></h5>
-                  <small class="text-muted">{{ $watch->getDescription() }}</small>
+                  <h5 class="my-0"><a href="{{ route('watch.show' , ['watchId' => $data['watches'][$i]->getId()]) }}"> {{$data['watches'][$i]->getName()}}</a></h5>
+                  <small class="text-muted">{{ $data['watches'][$i]->getDescription() }}</small>
                 </div>
                 <div class="col-md-2 mt-4">
-                  <input type="number" class="form-control" value="1" min="1" max="{{ $watch->getQuantity() }}">
+                  {{ __('watch.TotalUnits') }}: {{ $data['quantity'][$i] }}
                 </div>
                 <div class="col-md-2 mt-4 pt-1">
-                  <strong>${{ $watch->getPrice() }} {{ __('watch.Unit') }}</strong>
+                  <strong>${{ $data['watches'][$i]->getPrice() }} {{ __('watch.Unit') }}</strong>
                 </div>
                 <div class="col-md-2 mt-4">
-                  <form action="{{ route('session.delete', ['watchId' => $watch->getId()]) }}" method="POST">
+                  <form action="{{ route('session.delete', ['watchId' => $data['watches'][$i]->getId()]) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger btn-block ml-auto">{{ __('customer.Delete') }}</button>
                   </form>
@@ -32,10 +33,15 @@
             </div>
           </div>
       </div>
-    @endforeach  
+    @endfor
     @guest <small>{{ __('customer.Remember login') }}</small> @endguest
     <div class="d-flex">
-      <a href="{{ route('cart.checkout') }}" class="btn btn-primary btn-lg ml-auto">{{ __('customer.Continue checkout') }}</a>
+      <form action="{{ route('cart.checkout') }}" method="post">
+        @csrf
+        <button type="submit" class="btn btn-primary btn-lg ml-auto">
+          {{ __('customer.Continue checkout') }}
+        </button>
+      </form>
     </div>
   @else
     <div class="alert alert-info" role="alert">

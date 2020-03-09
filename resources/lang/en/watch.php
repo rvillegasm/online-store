@@ -33,4 +33,5 @@ return [
     'Add to cart' => 'Add to cart',
     'ideal' => 'Ideal For',
     'Unit' => 'Per Unit',
+    'TotalUnits' => 'Total Units',
 ];
