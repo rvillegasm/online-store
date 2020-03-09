@@ -14,23 +14,18 @@
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">{{ __('home.My cart') }}</span>
-          <span class="badge badge-secondary badge-pill">0</span>
+          <span class="badge badge-secondary badge-pill">{{ count($data['watches']) }}</span>
         </h4>
         <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Product name</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Second product</h6>
-              <small class="text-muted">Brief description</small>
-            </div>
-            <span class="text-muted">$8</span>
-          </li>
+          @for($i = 0; $i < count($data["watches"]); $i++)
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">{{ $data["watches"][$i]->getName() }}</h6>
+                <small class="text-muted">{{ __('watch.Quantity') }} {{ $data["quantity"][$i] }}</small>
+              </div>
+              <span class="text-muted">$ {{ $data["watches"][$i]->getPrice() * $data["quantity"][$i] }}</span>
+            </li>
+          @endfor
           <li class="list-group-item d-flex justify-content-between">
             <span>{{ __('customer.Total') }} (USD)</span>
             <strong>$20</strong>
@@ -40,11 +35,12 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">{{ __('customer.Customer info') }}</h4>
-        <form>
-            <div class="mb-3">
-              <label>Name</label>
-              <input type="text" class="form-control" required>
-            </div>
+        <form action="{{ route('cart.process') }}" method="post">
+          @csrf
+          <div class="mb-3">
+            <label>Name</label>
+            <input type="text" class="form-control" required>
+          </div>
   
           <div class="mb-3">
             <label></label>
@@ -94,6 +90,7 @@
               <input type="text" class="form-control" placeholder="1234 Main St" required>
             </div>
           </div>
+          
           <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">{{ __('customer.Finalize') }}</button>
         </form>
