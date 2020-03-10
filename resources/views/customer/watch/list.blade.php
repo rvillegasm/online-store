@@ -29,23 +29,17 @@
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}} </a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
                     <p class="card-text">{{$watch->getDescription()}}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <form action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
-                                @csrf
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm">
-                                            Quantity:<input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $watch->getQuantity() }}">
-                                        </div>
-                                        <div class="col-sm">
-                                            <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                    <form class="container" action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
+                        @csrf
+                        <div class="row">
+                          <div class="col-lg-5 px-1 mt-1">
+                              <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $watch->getQuantity() }}">
+                          </div>
+                          <div class="col-lg-6 px-0 mt-1">
+                              <button type="submit" class="btn btn-dark btn-block">{{ __('watch.Add to cart') }}</button>
+                          </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
