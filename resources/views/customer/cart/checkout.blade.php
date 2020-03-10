@@ -28,7 +28,7 @@
           @endfor
           <li class="list-group-item d-flex justify-content-between">
             <span>{{ __('customer.Total') }} (USD)</span>
-            <strong>$20</strong>
+            <strong>{{ $data['total'] }}</strong>
           </li>
         </ul>
         <a href="{{ route('cart.index') }}" class="btn btn-dark btn-block">{{ __('home.Edit cart') }}</a>

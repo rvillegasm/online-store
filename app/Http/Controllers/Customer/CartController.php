@@ -16,6 +16,7 @@ class CartController extends Controller
 {
     private const WATCHES = 'watches';
     private const QUANTITY = 'quantity';
+    private const TOTAL = 'total';
 
     /**
      * Instantiate a new controller instance.
@@ -61,6 +62,11 @@ class CartController extends Controller
         $watches = Watch::find($sessionWatches);
         $data[CartController::WATCHES] = $watches;
         $data[CartController::QUANTITY] = $sessionQuantities;
+        $total = 0;
+        for($i = 0; $i < count($watches); $i++) {
+            $total += $watches[$i]->getPrice() * $sessionQuantities[$i];
+        }
+        $data[CartController::TOTAL] = $total;
 
         return view('customer.cart.checkout')->with("data", $data);
     } 
