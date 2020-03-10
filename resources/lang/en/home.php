@@ -20,4 +20,5 @@ return [
     'instantSearch' => 'Go instantly to your watch!',
     'watch' => 'watch',
     'enterWatchName' => 'Enter Watch Name',
+    'Orders' => 'Orders',
 ];

@@ -39,27 +39,22 @@
           @csrf
           <div class="mb-3">
             <label>Name</label>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" name="name" required>
           </div>
-  
-          <div class="mb-3">
-            <label></label>
-            <input type="email" class="form-control" placeholder="you@example.com" required>
-          </div>
-  
+
           <div class="mb-3">
             <label>{{ __('customer.Address') }}</label>
-            <input type="text" class="form-control" placeholder="1234 Main St" required>
+            <input type="text" class="form-control" placeholder="1234 Main St" name="adress" required>
           </div>
 
           <div class="mb-3">
             <label>{{ __('customer.Phone number') }}</label>
-            <input type="text" class="form-control" required>
+            <input type="number" class="form-control" name="phone_number" required>
           </div>
 
           <div class="mb-3">
             <label>{{ __('customer.Zip') }}</label>
-            <input type="text" class="form-control" required>
+            <input type="number" class="form-control" name="zip" required>
           </div>
 
           <hr class="mb-4">
@@ -69,25 +64,25 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label>Name on card</label>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control">
             </div>
             <div class="col-md-6 mb-3">
               <label>Credit card number</label>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control">
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
               <label>Expiration</label>
-              <input type="text" class="form-control" required>
+              <input type="text" class="form-control">
             </div>
             <div class="col-md-3 mb-3">
               <label>CVV</label>
-              <input type="text" class="form-control" placeholder="" required>
+              <input type="text" class="form-control" placeholder="">
             </div>
             <div class="col-md-6 mb-3">
               <label>Address</label>
-              <input type="text" class="form-control" placeholder="1234 Main St" required>
+              <input type="text" class="form-control" placeholder="1234 Main St">
             </div>
           </div>
           

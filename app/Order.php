@@ -45,16 +45,6 @@ class Order extends Model
         $this->attributes[Order::STATUS] = $status;
     }
 
-    public function getItemId()
-    {
-        return $this->attributes[Order::ITEM_ID];
-    }
-
-    public function setItemId($iId)
-    {
-        $this->attributes[Order::ITEM_ID] = $iId;
-    }
-
     public function getUserId()
     {
         return $this->attributes[Order::USER_ID];

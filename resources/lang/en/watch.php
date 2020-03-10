@@ -35,4 +35,8 @@ return [
     'Unit' => 'Per Unit',
     'TotalUnits' => 'Total Units',
     'Generate Excel' => 'Generate Excel',
+    'Date Shipped' => 'Date Shipped',
+    'Status' => 'Status',
+    'Items' => 'Items',
+    'Customer name' => 'Customer name',
 ];

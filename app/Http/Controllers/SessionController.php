@@ -17,14 +17,16 @@ class SessionController extends Controller
             if (!in_array($watchId, $watches)) {
                 // add the watchId to session
                 Session::push(SessionController::WATCHES, (int)$watchId);
-            }
-            // add the quantity to session
-            $quantities = Session::pull(SessionController::QUANTITY, []);
-            if (($key = array_search($watchId, $watches)) !== false)
-            {
-                $quantities[$key] = (int)$request->quantity;
-            }
-            Session::put(SessionController::QUANTITY, $quantities);
+                Session::push(SessionController::QUANTITY, (int)$request->quantity);
+            } else {
+                // add the quantity to session
+                $quantities = Session::pull(SessionController::QUANTITY, []);
+                if (($key = array_search($watchId, $watches)) !== false)
+                {
+                    $quantities[$key] = (int)$request->quantity;
+                }
+                Session::put(SessionController::QUANTITY, $quantities);
+            } 
         }
         else {
             Session::put(SessionController::WATCHES, [(int)$watchId]);
