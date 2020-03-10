@@ -22,7 +22,13 @@ class HomeController extends Controller
         foreach ($watchesSales as $watchSales) {
             $watchesIds[] = $watchSales->watch_id;
         }
-        $data["watches"] = Watch::find($watchesIds);
+        $watches = Watch::whereIn('id', $watchesIds)->get()->keyBy('id');
+        
+        $watchesInOrder = [];
+        foreach ($watchesIds as $id) {
+            $watchesInOrder[] = $watches[$id];
+        }
+        $data["watches"] = $watchesInOrder;
 
         return view('home.index')->with("data", $data);
     }
