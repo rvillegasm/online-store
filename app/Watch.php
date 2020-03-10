@@ -42,7 +42,7 @@ class Watch extends Model
             "quantity" => "required|numeric|gt:0",
             "gender" => "required",
             "description" => "required",
-            "category_id" => "required|numeric|gt:0",
+            "category_id" => "required",
         ]);
     }
     
