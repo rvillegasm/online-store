@@ -35,6 +35,8 @@ Route::get('/admin/watch/export/', 'Admin\WatchController@export')->name("admin.
 
 Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
 
+Route::get('/admin/order', 'Admin\OrderController@index')->name("admin.order.index");
+
 /*
 | AUTHENTICATION ROUTES
 */

@@ -37,6 +37,9 @@
                                     <a class="btn-light dropdown-item" href="{{ route('admin.category.index') }}" role="button">{{ __('watch.Categories') }}</a>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.order.index') }}" role="button">{{ __('home.Orders') }}</a>
+                            </li>
                         @endif
                     </ul>
 

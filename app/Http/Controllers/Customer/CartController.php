@@ -84,31 +84,40 @@ class CartController extends Controller
         $order->setDateShipped(now());
         $order->setStatus("SHIPPED");
         $order->setUserId(auth()->user()->getId());
-        // save the order
-        $order->save();
+
+        $items = [];
         // create an item for every watch
         for($i = 0; $i < count($watches); $i++) {
             $item = new Item;
             $item->setProductQuantity($sessionQuantities[$i]);
             $item->setSubTotal($watches[$i]->getPrice() * $item->getProductQuantity());
             $item->setWatchId($watches[$i]->getId());
-            $item->setOrderId($order->getId());
+            $items[] = $item;
             // check if the quantity can be done correctly
             $watchQuantity = $watches[$i]->getQuantity();
             $desiredItemQuantity = $item->getProductQuantity();
             if ($watchQuantity - $desiredItemQuantity >= 0) {
+                // update product quantity
                 $watches[$i]->setQuantity($watchQuantity - $desiredItemQuantity);
-                // save the item
-                $item->save();
-            }
-            else {
+            } else {
                 return redirect()
                     ->route('cart.index')
-                    ->with('error', 'Cannot buy that many watches');
+                    ->with('error', 'Cannot buy that many watches of: '.$watches[$i]->getName());
             }
         }
 
         SessionController::clear();
+
+        // save the order
+        $order->save();
+
+        for($i = 0; $i < count($watches); $i++) {
+            // save the product updated
+            $watches[$i]->save();
+            // save the item
+            $items[$i]->setOrderId($order->getId());
+            $items[$i]->save();
+        }
         
         return redirect()
             ->route('cart.index')
