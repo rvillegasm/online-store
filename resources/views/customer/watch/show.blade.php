@@ -23,21 +23,17 @@
                         {{$data["watch"]->getDescription()}}
                         <strong>{{ __('watch.ideal') }}: </strong>{{$data["watch"]->getGender()}}
                     </p>
-                    <div class="btn-group">
-                        <form action="{{ route('session.put', ['watchId' => $data['watch']->getId()]) }}" method="POST">
-                            @csrf
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        Quantity:<input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $data['watch']->getQuantity() }}">
-                                    </div>
-                                    <div class="col-sm">
-                                        <button type="submit" class="btn btn-dark">{{ __('watch.Add to cart') }}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <form class="container" action="{{ route('session.put', ['watchId' => $data['watch']->getId()]) }}"method="POST">
+                        @csrf
+                        <div class="row">
+                          <div class="col-md-2 px-1 mt-1">
+                              <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{  $data['watch']->getQuantity() }}">
+                          </div>
+                          <div class="col-md-2 px-0 mt-1">
+                              <button type="submit" class="btn btn-dark btn-block">{{ __('watch.Add to cart') }}</button>
+                          </div>
+                        </div>
+                    </form>
                     <br />
                     <div class="clearfix"></div>
                     <hr>
@@ -46,11 +42,11 @@
                         @csrf
                         <input class="form-control" type="text" name="description" placeholder="{{ __('comment.commentPlaceholder') }}" />
                         <input type="hidden" name="watch_id" value="{{ $data['watch']->getId() }}" />
-                        <input type="submit" class="btn btn-dark btn-sm btn-block" value="{{ __('comment.submitComment') }}">
+                        <input type="submit" class="btn btn-dark btn-sm btn-block mt-1" value="{{ __('comment.submitComment') }}">
                     </form>
                     <!-- Comments -->
                     <div class="clearfix"></div>
-                    </br>
+                    <br>
                     <div class="card">
                         <ul class="list-group list-group-flush">
                         @foreach($data["watch"]->comments as $comment)
