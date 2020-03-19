@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Order;
+use App\User;
 
 class CustomerDetails extends Model
 {
-    //attributes id, name, adress, phone_number, zip, created_at, updated_at
-    protected $fillable = ['name', 'adress', 'phone_number', 'zip'];
+    //attributes id, name, adress, phone_number, zip, user_id created_at, updated_at
+    protected $fillable = ['name', 'adress', 'phone_number', 'zip', 'user_id'];
 
     public static function validate(Request $request) {
         $request->validate([
@@ -59,6 +60,7 @@ class CustomerDetails extends Model
     {
         $this->attributes['phone_number'] = $phoneNumber;
     }
+
     public function getZip()
     {
         return $this->attributes['zip'];
@@ -69,9 +71,24 @@ class CustomerDetails extends Model
         $this->attributes['zip'] = $zip;
     }
 
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
 

@@ -23,5 +23,6 @@ $factory->define(CustomerDetails::class, function (Faker $faker) {
         'adress' => Str::random(20),
         'phone_number' => $faker->numberBetween(3000, 9000),
         'zip' => $faker->numberBetween(500, 1000),
+        'user_id' => 2,
     ];
 });

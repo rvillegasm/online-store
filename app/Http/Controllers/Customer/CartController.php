@@ -109,10 +109,10 @@ class CartController extends Controller
         }
 
         SessionController::clear();
-
+        
         $customerDetails = CustomerDetails::create($request->only([
             "name", "adress", "phone_number", "zip"
-        ]));
+        ]) + ["user_id" => auth()->user()->getId()]);
         
         // save the order
         $order->setCustomerDetails($customerDetails->getId());
