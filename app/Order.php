@@ -5,12 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Item;
 use App\User;
+use App\CustomerDetails;
 
 class Order extends Model 
 {
     private const DATE_SHIPPED = 'date_shipped';
     private const STATUS = 'status';
     private const USER_ID = 'user_id';
+    private const CUSTOMER_DETAILS_ID = 'customer_details_id';
 
     //attributes id, dateShipped, status, created_at, updated_at
     protected $fillable = [Order::DATE_SHIPPED, Order::STATUS, Order::USER_ID];
@@ -55,6 +57,16 @@ class Order extends Model
         $this->attributes[Order::USER_ID] = $uId;
     }
 
+    public function getCustomerDetails()
+    {
+        return $this->attributes[Order::CUSTOMER_DETAILS_ID];
+    }
+
+    public function setCustomerDetails($cId)
+    {
+        $this->attributes[Order::CUSTOMER_DETAILS_ID] = $cId;
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);
@@ -63,6 +75,11 @@ class Order extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function customerDetails()
+    {
+        return $this->hasOne(CustomerDetails::class);
     }
 }
 

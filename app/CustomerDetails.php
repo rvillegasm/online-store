@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use App\Order;
 
 class CustomerDetails extends Model
 {
@@ -66,6 +67,11 @@ class CustomerDetails extends Model
     public function setZip($zip)
     {
         $this->attributes['zip'] = $zip;
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
     }
 }
 

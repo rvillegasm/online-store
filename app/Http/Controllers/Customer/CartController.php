@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Watch;
 use App\Item;
 use App\Order;
+use App\CustomerDetails;
 use App\Http\Controllers\SessionController;
 
 class CartController extends Controller
@@ -67,6 +68,7 @@ class CartController extends Controller
 
     public function process(Request $request)
     {
+        CustomerDetails::validate($request);
         $data = [];
         $data["title"] = "Process";
 
@@ -82,7 +84,7 @@ class CartController extends Controller
         // create the order
         $order = new Order;
         $order->setDateShipped(now());
-        $order->setStatus("SHIPPED");
+        $order->setStatus("PENDING");
         $order->setUserId(auth()->user()->getId());
 
         $items = [];
@@ -108,7 +110,12 @@ class CartController extends Controller
 
         SessionController::clear();
 
+        $customerDetails = CustomerDetails::create($request->only([
+            "name", "adress", "phone_number", "zip"
+        ]));
+        
         // save the order
+        $order->setCustomerDetails($customerDetails->getId());
         $order->save();
 
         for($i = 0; $i < count($watches); $i++) {

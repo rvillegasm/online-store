@@ -2,8 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Order;
+use App\CustomerDetails;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Order::class, function (Faker $faker) {
+$factory->define(CustomerDetails::class, function (Faker $faker) {
     return [
-        'date_shipped' => $faker->dateTimeBetween('now', '+1 month'),
-        'status' => $faker->regexify('(DELIVERED|PENDING|SHIPPED)'),
-        'user_id' => 2,
-        'customer_details_id' => $faker->numberBetween(1, 4),
+        'name' => $faker->name,
+        'adress' => Str::random(20),
+        'phone_number' => $faker->numberBetween(3000, 9000),
+        'zip' => $faker->numberBetween(500, 1000),
     ];
 });
-
-?>
