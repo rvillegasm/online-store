@@ -12,7 +12,7 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Order::class, 8)->create();
+        factory(Order::class, 6)->create();
     }
 }
 

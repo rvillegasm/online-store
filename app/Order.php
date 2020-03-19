@@ -79,7 +79,7 @@ class Order extends Model
 
     public function customerDetails()
     {
-        return $this->hasOne(CustomerDetails::class);
+        return $this->belongsTo(CustomerDetails::class);
     }
 }
 

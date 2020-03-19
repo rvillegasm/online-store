@@ -39,4 +39,5 @@ return [
     'Status' => 'Status',
     'Items' => 'Items',
     'Customer name' => 'Customer name',
+    'Details' => 'Details',
 ];

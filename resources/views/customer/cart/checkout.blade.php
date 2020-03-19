@@ -38,7 +38,7 @@
         <form action="{{ route('cart.process') }}" method="post">
           @csrf
           <div class="mb-3">
-            <label>Name</label>
+            <label>{{ __('customer.Name') }}</label>
             <input type="text" class="form-control" name="name" required>
           </div>
 

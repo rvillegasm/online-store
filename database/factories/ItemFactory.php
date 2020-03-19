@@ -21,7 +21,7 @@ $factory->define(Item::class, function (Faker $faker) {
         'product_quantity' => $faker->numberBetween(0, 40),
         'sub_total' => $faker->randomFloat(2, 0, 100),
         'watch_id' => $faker->numberBetween(1, 8),
-        'order_id' => $faker->numberBetween(1, 8),
+        'order_id' => $faker->numberBetween(1, 6),
     ];
 });
 
