@@ -40,6 +40,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.order.index') }}" role="button">{{ __('home.Orders') }}</a>
                             </li>
+                        @elseif(Auth::check() && Auth::user()->hasRole('customer'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('customer.order.index') }}" role="button">{{ __('home.My orders') }}</a>
+                            </li>
                         @endif
                     </ul>
 

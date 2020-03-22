@@ -2,8 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Item;
+use App\CustomerDetails;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Item::class, function (Faker $faker) {
+$factory->define(CustomerDetails::class, function (Faker $faker) {
     return [
-        'product_quantity' => $faker->numberBetween(0, 40),
-        'sub_total' => $faker->randomFloat(2, 0, 100),
-        'watch_id' => $faker->numberBetween(1, 8),
-        'order_id' => $faker->numberBetween(1, 6),
+        'name' => $faker->name,
+        'adress' => Str::random(20),
+        'phone_number' => $faker->numberBetween(3000, 9000),
+        'zip' => $faker->numberBetween(500, 1000),
+        'user_id' => 2,
     ];
 });
-
-?>

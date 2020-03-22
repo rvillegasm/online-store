@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Watch;
+use App\Oder;
 
 class Item extends Model 
 {
@@ -68,6 +69,11 @@ class Item extends Model
     public function watch()
     {
         return $this->belongsTo(Watch::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Oder::class);
     }
 }
 

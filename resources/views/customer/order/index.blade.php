@@ -16,7 +16,6 @@
                     <th scope="col">#</th>
                     <th scope="col">{{ __('watch.Date Shipped') }}</th>
                     <th scope="col">{{ __('watch.Status') }}</th>
-                    <th scope="col">{{ __('watch.Customer name') }}</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -26,9 +25,8 @@
                     <th scope="row">{{ $order->getId() }}</th>
                     <td>{{ $order->getDateShipped() }}</td>
                     <td>{{ $order->getStatus() }}</td>
-                    <td>{{ $order->user->getName() }}</td>
                     <td>
-                      <a href="{{ route('admin.order.show' , ['orderId' => $order->getId()]) }}" role="button">{{ __('watch.Details') }}</a>
+                      <a href="{{ route('admin.order.index') }}" role="button">{{ __('watch.Details') }}</a>
                   </td>
                   </tr>
                 @endforeach

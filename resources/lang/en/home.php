@@ -21,4 +21,5 @@ return [
     'watch' => 'watch',
     'enterWatchName' => 'Enter Watch Name',
     'Orders' => 'Orders',
+    'My orders' => 'My orders',
 ];
