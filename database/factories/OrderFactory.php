@@ -18,8 +18,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Order::class, function (Faker $faker) {
     return [
-        'date_shipped' => $faker->dateTimeBetween('now', '+1 month'),
-        'status' => $faker->regexify('(DELIVERED|PENDING|SHIPPED)'),
+        'status' => 'PENDING',
         'user_id' => 2,
         'customer_details_id' => $faker->numberBetween(1, 4),
     ];

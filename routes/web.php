@@ -24,7 +24,8 @@ Route::post('/cart/checkout', 'Customer\CartController@checkout')->name("cart.ch
 Route::post('/cart/process', 'Customer\CartController@process')->name("cart.process");
 Route::post('/watch/show/{watchId}/storeComment', 'Customer\CommentController@store')->name("comment.store");
 
-Route::get('order', 'Customer\OrderController@index')->name("customer.order.index");
+Route::get('/order', 'Customer\OrderController@index')->name("order.index");
+Route::get('/order/show/{orderId}', 'Customer\OrderController@show')->name("order.show");
 
 /*
 | ADMIN ROUTES
@@ -37,7 +38,8 @@ Route::get('/admin/watch/export/', 'Admin\WatchController@export')->name("admin.
 Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
 
 Route::get('/admin/order', 'Admin\OrderController@index')->name("admin.order.index");
-Route::get('order/show/{orderId}', 'Admin\OrderController@show')->name("admin.order.show");
+Route::get('/admin/order/show/{orderId}', 'Admin\OrderController@show')->name("admin.order.show");
+Route::post('/admin/order/update/{orderId}', 'Admin\OrderController@update')->name("admin.order.update");
 
 /*
 | AUTHENTICATION ROUTES

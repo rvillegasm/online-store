@@ -56,36 +56,6 @@
                     <hr>
                     <p>{{ $data['order']->user->getName() }}</p>
                     <p>{{ $data['order']->user->getEmail() }}</p>
-                    <hr>
-                    <form method="POST" action="{{ route('admin.order.update', $data['order']->getId()) }}">
-                        @csrf
-    
-                        <div class="form-row">
-                            <div class="form-group col">
-                              <label>{{ __('watch.Status') }}</label>
-                              <select class="custom-select" name="status" required>
-                              <option selected value="{{ $data['order']->getStatus() }}">{{ __('home.'.$data['order']->getStatus()) }}</option>
-                              <option value="PENDING">{{ __('home.PENDING') }}</option>
-                              <option value="SHIPPED">{{ __('home.SHIPPED') }}</option>
-                              <option value="DELIVERED">{{ __('home.DELIVERED') }}</option>
-                              
-                              </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col">
-                              <label>{{ __('watch.Date Shipped') }}</label>
-                              <input type="date" class="form-control @error('price') is-invalid @enderror" name="date_shipped" value="{{ $data['order']->getDateShipped() }}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary btn-block btn-lg">
-                                    {{ __('home.Save') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>

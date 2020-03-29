@@ -36,6 +36,7 @@ return [
     'TotalUnits' => 'Total Units',
     'Generate Excel' => 'Generate Excel',
     'Date Shipped' => 'Date Shipped',
+    'Date' => 'Date',
     'Status' => 'Status',
     'Items' => 'Items',
     'Customer name' => 'Customer name',
