@@ -14,19 +14,23 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">{{ __('watch.Date') }}</th>
                     <th scope="col">{{ __('watch.Date Shipped') }}</th>
                     <th scope="col">{{ __('watch.Status') }}</th>
-                    <th></th>
+                    <th scope="col">{{ __('watch.Customer name') }}</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($data["orders"] as $order)
                   <tr>
                     <th scope="row">{{ $order->getId() }}</th>
+                    <td>{{ $order->getCreatedAt() }}</td>
                     <td>{{ $order->getDateShipped() }}</td>
-                    <td>{{ $order->getStatus() }}</td>
+                    <td>{{ __('home.'.$order->getStatus()) }}</td>
+                    <td>{{ $order->user->getName() }}</td>
                     <td>
-                      <a href="{{ route('admin.order.index') }}" role="button">{{ __('watch.Details') }}</a>
+                      <a class="btn btn-info btn-sm" href="{{ route('order.show', ['orderId' => $order->getId()]) }}" role="button">{{ __('watch.Details') }}</a>
                   </td>
                   </tr>
                 @endforeach

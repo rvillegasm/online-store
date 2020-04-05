@@ -66,7 +66,7 @@ class WatchController extends Controller
         $message["type"] = "success";
         $message["text"] = "Watch created successfully";
 
-        return redirect()->route('home.index')->with("message", $message);
+        return redirect()->route('admin.watch.index')->with("message", $message);
     }
 
     public function export() 

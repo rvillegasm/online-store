@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,7 +15,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-<body class="navbar-top-fixed">
+<body class="d-flex flex-column h-100 navbar-top-fixed">
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
@@ -42,7 +43,7 @@
                             </li>
                         @elseif(Auth::check() && Auth::user()->hasRole('customer'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customer.order.index') }}" role="button">{{ __('home.My orders') }}</a>
+                                <a class="nav-link" href="{{ route('order.index') }}" role="button">{{ __('home.My orders') }}</a>
                             </li>
                         @endif
                     </ul>
@@ -78,24 +79,25 @@
                 </div>
             </div>
         </nav>
+    </div>
 
-        <main>
-            @yield('content')
-        </main>
-    </div>
-</body>
-<footer class="footer mt-auto py-3">
-    <div class="bg-dark py-4">
-    </div>
-    <div class="container row py-4 px-4">
-        <div class="col-6 col-md">
-        <h5>About</h5>
-        <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">{{ __('home.Team') }}</a></li>
-            <li><a class="text-muted" href="#">{{ __('home.Privacy') }}</a></li>
-            <li><a class="text-muted" href="#">{{ __('home.Terms') }}</a></li>
-        </ul>
+    <main role="main" class="flex-shrink-0">
+        @yield('content')
+    </main>
+
+    <footer class="footer mt-auto py-1">
+        <div class="bg-dark py-3"></div>
+        <div class="container row py-4 px-4">
+            <div class="col-6 col-md">
+                <h5>About</h5>
+                <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">{{ __('home.Team') }}</a></li>
+                    <li><a class="text-muted" href="#">{{ __('home.Privacy') }}</a></li>
+                    <li><a class="text-muted" href="#">{{ __('home.Terms') }}</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
+</body>
+
 </html>

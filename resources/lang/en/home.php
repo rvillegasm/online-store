@@ -22,4 +22,9 @@ return [
     'enterWatchName' => 'Enter Watch Name',
     'Orders' => 'Orders',
     'My orders' => 'My orders',
+    'Save' => 'Save',
+    'Edit' => 'Edit',
+    'PENDING' => 'PENDING',
+    'SHIPPED' => 'SHIPPED',
+    'DELIVERED' => 'DELIVERED',
 ];

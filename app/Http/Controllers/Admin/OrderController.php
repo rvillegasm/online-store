@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Item;
@@ -18,7 +19,8 @@ class OrderController extends Controller
         $this->middleware('role:admin');
     }
 
-    public function index(){
+    public function index()
+    {
         $data = [];
         $data["title"] = "Orders";
         $data["orders"] = Order::with('user')->orderBy('id', 'desc')->get();
@@ -32,6 +34,14 @@ class OrderController extends Controller
         $data["order"] = Order::with('user')->with('items.watch')->with('customerDetails')->where('id', $orderId)->first();
 
         return view('admin.order.show')->with("data", $data);
+    }
+
+    public function update(Request $request, $orderId)
+    {
+        $order = Order::findOrFail($orderId);
+        $order->update($request->only(["status", "date_shipped"]));
+
+        return redirect()->route('admin.order.index');
     }
 }
 

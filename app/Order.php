@@ -67,6 +67,11 @@ class Order extends Model
         $this->attributes[Order::CUSTOMER_DETAILS_ID] = $cId;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->attributes['created_at'];
+    }
+
     public function items()
     {
         return $this->hasMany(Item::class);
