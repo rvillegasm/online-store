@@ -36,6 +36,8 @@ Route::post('/admin/watch/store', 'Admin\WatchController@store')->name("admin.wa
 Route::get('/admin/watch/export/', 'Admin\WatchController@export')->name("admin.watch.export");
 
 Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
+Route::get('/admin/category/create', 'Admin\CategoryController@create')->name("admin.category.create");
+Route::post('/admin/category/store', 'Admin\CategoryController@store')->name("admin.category.store");
 
 Route::get('/admin/order', 'Admin\OrderController@index')->name("admin.order.index");
 Route::get('/admin/order/show/{orderId}', 'Admin\OrderController@show')->name("admin.order.show");

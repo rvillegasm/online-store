@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="justify-content-center">
         <div class="card">
             <div class="card-header">{{ __('watch.Create a Watch') }}</div>
@@ -13,7 +13,10 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label>{{ __('watch.Image') }}</label>
-                          <input type="text" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required>
+                          <div class="custom-file">
+                            <input type="file" id="customFile" class="custom-file-input @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" accept="image/png,image/jpeg" required>
+                            <label class="custom-file-label" for="customFile" data-browse="{{ __('watch.Browse') }}">{{ __('watch.Choose file') }}</label>
+                          </div>
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">

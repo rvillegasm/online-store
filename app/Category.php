@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Watch;
 
 /*
@@ -17,6 +18,14 @@ class Category extends Model
     private const DESCRIPTION = 'description';
     
     protected $fillable = [Category::NAME,Category::IMAGE,Category::DESCRIPTION];
+
+    public static function validate(Request $request) {
+        $request->validate([
+            "name" => "required",
+            "image" => "required",
+            "description" => "required",
+        ]);
+    }
 
     public function getId()
     {
