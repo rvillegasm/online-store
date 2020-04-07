@@ -14,7 +14,7 @@ class UpdateOrderTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->bigInteger('customer_details_id')->unsigned();
+            $table->bigInteger('customer_details_id')->unsigned()->nullable();
 
             $table->foreign('customer_details_id')
                 ->references('id')
@@ -29,6 +29,9 @@ class UpdateOrderTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign('orders_customer_details_id_foreign');
+            $table->dropColumn('customer_details_id');
+        });
     }
 }
