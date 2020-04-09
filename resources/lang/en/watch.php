@@ -28,6 +28,7 @@ return [
     'Categories' => 'Categories',
     'Add Watch' => 'Add Watch',
     'Create a Watch' => 'Create a Watch',
+    'Create a Category' => 'Create a Category',
     'Create' => 'Create',
     'Add Category' =>  'Add Category',
     'Add to cart' => 'Add to cart',
@@ -41,4 +42,6 @@ return [
     'Items' => 'Items',
     'Customer name' => 'Customer name',
     'Details' => 'Details',
+    'Choose file' => 'Choose file',
+    'Browse' => 'Browse',
 ];

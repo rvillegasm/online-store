@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /* my providers */
+        App\Providers\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
