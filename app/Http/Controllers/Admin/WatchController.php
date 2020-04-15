@@ -69,6 +69,22 @@ class WatchController extends Controller
         return redirect()->route('admin.watch.index')->with("message", $message);
     }
 
+    /**
+     * Delete a watch.
+     *
+     * @param  Integer $id
+     * @return view
+     */
+    public function delete($id)
+    {
+        Watch::destroy($id);
+        $message = [];
+        $message["type"] = "success";
+        $message["text"] = "Watch deleted successfully";
+
+        return redirect()->route('admin.watch.index')->with("message", $message);
+    }
+
     public function export() 
     {
         return Excel::download(new WatchesExport, 'watches.xlsx');

@@ -23,6 +23,7 @@
                     <th scope="col">{{ __('watch.Category') }}</th>
                     <th scope="col">{{ __('watch.Price') }}</th>
                     <th scope="col">{{ __('watch.Quantity') }}</th>
+                    <th scope="col">{{ __('watch.Operations') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,6 +37,13 @@
                     <td>{{ $watch->category->getName() }}</td>
                     <td><span class="badge badge-primary">{{ $watch->getPrice() }}</span></td>
                     <td>{{ $watch->getQuantity() }}</td>
+                    <td>
+                      <form action="{{ route('admin.watch.delete', ['id' => $watch->getId()]) }}" method="post">
+                        <input class="btn btn-danger" type="submit" value="{{ __('watch.Delete') }}" />
+                        @method('delete')
+                        @csrf
+                      </form>
+                    </td>
                   </tr>
                 @endforeach
                 </tbody>

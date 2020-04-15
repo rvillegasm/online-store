@@ -44,4 +44,6 @@ return [
     'Details' => 'Details',
     'Choose file' => 'Choose file',
     'Browse' => 'Browse',
+    'Delete' => 'Delete',
+    'Operations' => 'Operations'
 ];

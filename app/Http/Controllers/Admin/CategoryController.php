@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Watch;
 use App\Category;
 
 class CategoryController extends Controller
@@ -40,7 +41,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Store a newly watch.
+     * Store a new category.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return view
@@ -52,6 +53,24 @@ class CategoryController extends Controller
         $message = [];
         $message["type"] = "success";
         $message["text"] = "Watch created successfully";
+
+        return redirect()->route('admin.category.index')->with("message", $message);
+    }
+
+    /**
+     * Delete a category. It also deletes every watch
+     * that belongs to that category.
+     *
+     * @param  Integer $id
+     * @return view
+     */
+    public function delete($id)
+    {
+        Watch::where('category_id', $id)->delete();
+        Category::destroy($id);
+        $message = [];
+        $message["type"] = "success";
+        $message["text"] = "Category deleted successfully";
 
         return redirect()->route('admin.category.index')->with("message", $message);
     }

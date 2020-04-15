@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 use App\Category;
 use App\Item;
@@ -16,6 +17,8 @@ use App\Comment;
 
 class Watch extends Model
 {
+    use SoftDeletes;
+
     private const NAME = 'name';
     private const QUANTITY = 'quantity';
     private const COLOR = 'color';
