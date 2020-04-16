@@ -5,11 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Watch;
+use App\User;
 
 class Comment extends Model
 {
-    //attributes id, description, watch_id, created_at, updated_at
-    protected $fillable = ['description', 'watch_id'];
+    //attributes id, description, watch_id, user_id, created_at, updated_at
+    protected $fillable = ['description', 'watch_id', 'user_id'];
 
     public static function validate(Request $request) {
         $request->validate([
@@ -48,6 +49,16 @@ class Comment extends Model
         $this->attributes['watch_id'] = $pId;
     }
 
+    public function getUserId()
+    {
+        return $this->attributes['user_id'];
+    }
+
+    public function setUserId($pId)
+    {
+        $this->attributes['user_id'] = $pId;
+    }
+
     public function getDate()
     {
         return $this->attributes['created_at'];
@@ -55,6 +66,10 @@ class Comment extends Model
 
     public function watch(){
         return $this->belongsTo(Watch::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }
 

@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Order;
 use App\CustomerDetails;
+use App\Comment;
 
 /*
     Watch Model Class
@@ -125,5 +126,10 @@ class User extends Authenticatable
     public function customerDetails()
     {
         return $this->hasMany(CustomerDetails::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
