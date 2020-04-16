@@ -45,5 +45,9 @@ return [
     'Choose file' => 'Choose file',
     'Browse' => 'Browse',
     'Delete' => 'Delete',
-    'Operations' => 'Operations'
+    'Operations' => 'Operations',
+    'Update' => 'Update',
+    'Update a Category' => 'Update a Category',
+    'Update a Watch' => 'Update a Watch',
+    'Edit' => 'Edit'
 ];

@@ -18,7 +18,7 @@
                     <th scope="col">{{ __('watch.Name') }}</th>
                     <th scope="col">{{ __('watch.Description') }}</th>
                     <th scope="col">{{ __('watch.Operations') }}</th>
-                </tr>
+                  </tr>
                 </thead>
                 <tbody>
                 @foreach($data["categories"] as $category)
@@ -32,6 +32,11 @@
                         @method('delete')
                         @csrf
                       </form>
+                    </td>
+                    <td>
+                      <a class="btn btn-info" href="{{ route('admin.category.edit', ['id' => $category->getId()]) }}">
+                        {{ __('watch.Edit') }}
+                      </a>
                     </td>
                   </tr>
                 @endforeach

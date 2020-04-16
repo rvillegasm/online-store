@@ -68,7 +68,7 @@ class Item extends Model
 
     public function watch()
     {
-        return $this->belongsTo(Watch::class);
+        return $this->belongsTo(Watch::class)->withTrashed();
     }
 
     public function order()

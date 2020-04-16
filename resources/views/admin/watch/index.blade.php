@@ -44,6 +44,11 @@
                         @csrf
                       </form>
                     </td>
+                    <td>
+                      <a class="btn btn-info" href="{{ route('admin.watch.edit', ['id' => $watch->getId()]) }}">
+                        {{ __('watch.Edit') }}
+                      </a>
+                    </td>
                   </tr>
                 @endforeach
                 </tbody>

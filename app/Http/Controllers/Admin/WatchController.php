@@ -85,6 +85,53 @@ class WatchController extends Controller
         return redirect()->route('admin.watch.index')->with("message", $message);
     }
 
+    /**
+     * Edit a watch.
+     *
+     * @param  Integer $id
+     * @return view
+     */
+    public function edit($id)
+    {
+        $categories = Category::all();
+        $data = [];
+        $data["id"] = $id;
+        $data["title"] = "Edit a Watch";
+        $data["categories"] = $categories;
+
+        return view('admin.watch.edit')->with("data", $data);
+    }
+
+    /**
+     * Update a watch inside the db.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function update(Request $request)
+    {
+        Watch::validate($request);
+        $watch = Watch::find($request->input('id'));
+        $watch->setImage($request->input('image'));
+        $watch->setCategory($request->input('category_id'));
+        $watch->setName($request->input('name'));
+        $watch->setBrand($request->input('brand'));
+        $watch->setReference($request->input('reference'));
+        $watch->setColor($request->input('color'));
+        $watch->setPrice($request->input('price'));
+        $watch->setQuantity($request->input('quantity'));
+        $watch->setGender($request->input('gender'));
+        $watch->setDescription($request->input('description'));
+
+        $watch->save();
+
+
+        $message = [];
+        $message["type"] = "success";
+        $message["text"] = "Watch created successfully";
+
+        return redirect()->route('admin.watch.index')->with("message", $message);
+    }
+
     public function export() 
     {
         return Excel::download(new WatchesExport, 'watches.xlsx');
