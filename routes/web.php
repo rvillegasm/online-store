@@ -33,11 +33,17 @@ Route::get('/order/show/{orderId}', 'Customer\OrderController@show')->name("orde
 Route::get('/admin/watch', 'Admin\WatchController@index')->name("admin.watch.index");
 Route::get('/admin/watch/create', 'Admin\WatchController@create')->name("admin.watch.create");
 Route::post('/admin/watch/store', 'Admin\WatchController@store')->name("admin.watch.store");
+Route::delete('/admin/watch/delete/{id}', 'Admin\WatchController@delete')->name("admin.watch.delete");
+Route::get('/admin/watch/edit/{id}', 'Admin\WatchController@edit')->name("admin.watch.edit");
+Route::put('/admin/watch/update', 'Admin\WatchController@update')->name("admin.watch.update");
 Route::get('/admin/watch/export/', 'Admin\WatchController@export')->name("admin.watch.export");
 
 Route::get('/admin/category', 'Admin\CategoryController@index')->name("admin.category.index");
 Route::get('/admin/category/create', 'Admin\CategoryController@create')->name("admin.category.create");
 Route::post('/admin/category/store', 'Admin\CategoryController@store')->name("admin.category.store");
+Route::delete('/admin/category/delete/{id}', 'Admin\CategoryController@delete')->name("admin.category.delete");
+Route::get('/admin/category/edit/{id}', 'Admin\CategoryController@edit')->name("admin.category.edit");
+Route::put('/admin/category/update', 'Admin\CategoryController@update')->name("admin.category.update");
 
 Route::get('/admin/order', 'Admin\OrderController@index')->name("admin.order.index");
 Route::get('/admin/order/show/{orderId}', 'Admin\OrderController@show')->name("admin.order.show");

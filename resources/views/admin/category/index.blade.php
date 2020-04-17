@@ -11,13 +11,14 @@
         </div>
         <div class="card-body">
             <a class="btn btn-primary" href="{{ route('admin.category.create') }}" role="button">{{ __('watch.Add Category') }}</a>
-            <table class="table table-responsive-xl mt-2" aria-describedby="categories">
+            <table class="table table-responsive" aria-describedby="categories">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">{{ __('watch.Name') }}</th>
                     <th scope="col">{{ __('watch.Description') }}</th>
-                </tr>
+                    <th scope="col">{{ __('watch.Operations') }}</th>
+                  </tr>
                 </thead>
                 <tbody>
                 @foreach($data["categories"] as $category)
@@ -25,10 +26,22 @@
                     <th scope="row">{{ $category->getId() }}</th>
                     <td>{{ $category->getName() }}</td>
                     <td>{{ $category->getDescription() }}</td>
+                    <td>
+                      <form action="{{ route('admin.category.delete', ['id' => $category->getId()]) }}" method="post">
+                        <input class="btn btn-danger" type="submit" value="{{ __('watch.Delete') }}" />
+                        @method('delete')
+                        @csrf
+                      </form>
+                    </td>
+                    <td>
+                      <a class="btn btn-info" href="{{ route('admin.category.edit', ['id' => $category->getId()]) }}">
+                        {{ __('watch.Edit') }}
+                      </a>
+                    </td>
                   </tr>
                 @endforeach
                 </tbody>
-              </table>
+             </table>
         </div>
     </div>
 </div>

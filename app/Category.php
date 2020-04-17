@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Watch;
 
 /*
@@ -13,6 +14,8 @@ use App\Watch;
 
 class Category extends Model
 {
+    use SoftDeletes;
+
     private const NAME = 'name';
     private const IMAGE = 'image';
     private const DESCRIPTION = 'description';
