@@ -9,8 +9,7 @@
     <div class="row no-gutters">
         <div class="col-md-4">
             <div class="card px-1">
-                <img class="img-thumbnail my-1" src="{{ asset('img/watch1.jpg') }}" alt="Card Back">
-                <img class="img-thumbnail my-1" src="{{ asset('img/watch2.jpg') }}" alt="Card Front">
+                <img class="img-thumbnail my-1" src="{{  URL::asset('storage/').'/'.$data['watch']->getImage() }}">
             </div>
         </div>
         <div class="col-md-8">
