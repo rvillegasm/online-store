@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Watch;
 use App\Category;
 use App\Exports\WatchesExport;
+use App\Interfaces\ImageStorage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class WatchController extends Controller
@@ -62,6 +63,10 @@ class WatchController extends Controller
         Watch::create($request->only([
             "name", "brand", "reference", "color", "price", "quantity", "image", "gender", "description","category_id"
         ]));
+
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
+        
         $message = [];
         $message["type"] = "success";
         $message["text"] = "Watch created successfully";
