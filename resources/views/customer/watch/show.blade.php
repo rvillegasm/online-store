@@ -40,6 +40,7 @@
                         @csrf
                         <input class="form-control" type="text" name="description" placeholder="{{ __('comment.commentPlaceholder') }}" />
                         <input type="hidden" name="watch_id" value="{{ $data['watch']->getId() }}" />
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->getId() }}" />
                         <input type="submit" class="btn btn-dark btn-sm btn-block mt-1" value="{{ __('comment.submitComment') }}">
                     </form>
                 @else

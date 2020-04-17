@@ -25,7 +25,7 @@ class CommentController extends Controller
         Comment::validate($request);
         Comment::create($request->only([
              'description', 'watch_id', 'user_id'
-        ]) + ['user_id' => Auth::user()->getId()]);
+        ]));
 
         return redirect()->route('watch.show' , ['watchId' => $request->watch_id]);
     }

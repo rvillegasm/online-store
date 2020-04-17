@@ -16,6 +16,7 @@ class Comment extends Model
         $request->validate([
             "description" => "required",
             "watch_id" => "required|numeric|gt:0",
+            "user_id"  => "required|numeric|gt:0"
         ]);
     }
 
