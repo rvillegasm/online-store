@@ -46,6 +46,7 @@ class Watch extends Model
             "gender" => "required",
             "description" => "required",
             "category_id" => "required",
+            "image" => "required|image|mimes:jpeg,png,jpg|max:2048",
         ]);
     }
     
