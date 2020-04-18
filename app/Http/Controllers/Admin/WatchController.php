@@ -104,7 +104,7 @@ class WatchController extends Controller
     {
         $categories = Category::all();
         $data = [];
-        $data["id"] = $id;
+        $data["watch"] = Watch::findOrFail($id);
         $data["title"] = "Edit a Watch";
         $data["categories"] = $categories;
 

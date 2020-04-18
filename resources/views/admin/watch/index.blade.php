@@ -23,7 +23,7 @@
                     <th scope="col">{{ __('watch.Category') }}</th>
                     <th scope="col">{{ __('watch.Price') }}</th>
                     <th scope="col">{{ __('watch.Quantity') }}</th>
-                    <th scope="col">{{ __('watch.Operations') }}</th>
+                    <th scope="col" colspan="2">{{ __('watch.Operations') }}</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,16 +38,16 @@
                     <td><span class="badge badge-primary">{{ $watch->getPrice() }}</span></td>
                     <td>{{ $watch->getQuantity() }}</td>
                     <td>
+                      <a class="btn btn-info btn-sm" href="{{ route('admin.watch.edit', ['id' => $watch->getId()]) }}">
+                        {{ __('watch.Edit') }}
+                      </a>
+                    </td>
+                    <td>
                       <form action="{{ route('admin.watch.delete', ['id' => $watch->getId()]) }}" method="post">
-                        <input class="btn btn-danger" type="submit" value="{{ __('watch.Delete') }}" />
+                        <input class="btn btn-danger btn-sm" type="submit" value="{{ __('watch.Delete') }}" onclick="return confirm('{{ __('home.Are you sure?') }}')"/>
                         @method('delete')
                         @csrf
                       </form>
-                    </td>
-                    <td>
-                      <a class="btn btn-info" href="{{ route('admin.watch.edit', ['id' => $watch->getId()]) }}">
-                        {{ __('watch.Edit') }}
-                      </a>
                     </td>
                   </tr>
                 @endforeach
