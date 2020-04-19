@@ -27,5 +27,6 @@ return [
     'PENDING' => 'PENDING',
     'SHIPPED' => 'SHIPPED',
     'DELIVERED' => 'DELIVERED',
-    'logincomment' => 'Login if you would like to comment'
+    'logincomment' => 'Login if you would like to comment',
+    'Are you sure?' => 'Are you sure?',
 ];

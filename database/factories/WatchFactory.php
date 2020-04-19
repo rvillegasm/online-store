@@ -24,9 +24,9 @@ $factory->define(Watch::class, function (Faker $faker) {
         'color' => Str::random(5),
         'brand' => $faker->company,
         'reference' => Str::random(10),
-        'gender' => Str::random(7),
+        'gender' => $faker->randomElement(['MALE', 'FEMALE', 'NONE']),
         'price' => $faker->numberBetween(200, 9000),
-        'image' => Str::random(20),
+        'image' => 'watch/w1.jpg',
         'description' => Str::random(99),
         'category_id' => $faker->numberBetween(1, 5),
     ];

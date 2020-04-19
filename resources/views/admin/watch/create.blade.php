@@ -12,9 +12,9 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label>{{ __('watch.Image') }}</label></br>
+                            <label>{{ __('watch.Image') }}</label>
                             <div class="custom-file">
-                            <input type="file" id="customFile" class="custom-file-input @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}">
+                            <input type="file" id="customFile" class="custom-file-input @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" accept="image/*">
                             <label class="custom-file-label" for="customFile" data-browse="{{ __('watch.Browse') }}">{{ __('watch.Choose file') }}</label>
                             </div>
 

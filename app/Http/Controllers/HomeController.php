@@ -26,7 +26,9 @@ class HomeController extends Controller
         
         $watchesInOrder = [];
         foreach ($watchesIds as $id) {
-            $watchesInOrder[] = $watches[$id];
+            if(isset($watches[$id])) {
+                $watchesInOrder[] = $watches[$id];
+            }
         }
         $data["watches"] = $watchesInOrder;
 

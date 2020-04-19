@@ -89,7 +89,6 @@ class CartController extends Controller
         
         // create the order
         $order = new Order;
-        $order->setDateShipped(now());
         $order->setStatus("PENDING");
         $order->setUserId(auth()->user()->getId());
 
