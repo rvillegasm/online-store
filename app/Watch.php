@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
+use App\Interfaces\ImageStorage;
 
 use App\Category;
 use App\Item;
@@ -123,7 +125,8 @@ class Watch extends Model
 
     public function getImage()
     {
-        return $this->attributes[Watch::IMAGE];
+        $storeInterface = app(ImageStorage::class);
+        return $storeInterface->get($this->attributes[Watch::IMAGE]);
     }
 
     public function setImage($image)

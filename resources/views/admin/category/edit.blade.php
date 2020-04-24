@@ -11,7 +11,7 @@
                     @csrf
                     @method('put')
 
-                    <input type="hidden" name="id" id="id" value="{{ $data['id'] }}">
+                    <input type="hidden" name="id" id="id" value="{{ $data['category']->getId() }}">
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -30,7 +30,7 @@
 
                         <div class="form-group col-md-6">
                             <label>{{ __('watch.Name') }}</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $data['category']->getName() }}" required>
   
                               @error('name')
                                   <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label>{{ __('watch.Description') }}</label>
-                          <textarea class="form-control @error('gender') is-invalid @enderror" name="description" value="{{ old('description') }}"  rows="3" required></textarea>
+                          <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="3" required>{{ $data['category']->getDescription() }}</textarea>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">

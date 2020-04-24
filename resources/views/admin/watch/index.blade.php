@@ -30,7 +30,7 @@
                 @foreach($data["watches"] as $watch)
                   <tr>
                     <th scope="row">{{ $watch->getId() }}</th>
-                    <td>{{ $watch->getName() }}</td>
+                    <td><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}}</a></td>
                     <td>{{ $watch->getBrand() }}</td>
                     <td>{{ $watch->getReference() }}</td>
                     <td>{{ $watch->getColor() }}</td>

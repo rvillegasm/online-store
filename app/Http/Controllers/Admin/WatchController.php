@@ -64,12 +64,12 @@ class WatchController extends Controller
         $image = $request->file('image');
         $image_name = "watch/" . date('YmdHis') . "-" . rand() . "." . $image->getClientOriginalExtension();
 
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($image, $image_name);
+
         Watch::create($request->only([
             "name", "brand", "reference", "color", "price", "quantity", "gender", "description","category_id"
         ]) + ["image" => $image_name]);
-
-        $storeInterface = app(ImageStorage::class);
-        $storeInterface->store($image, $image_name);
         
         $message = [];
         $message["type"] = "success";
@@ -119,8 +119,15 @@ class WatchController extends Controller
     public function update(Request $request)
     {
         Watch::validate($request);
+
+        $image = $request->file('image');
+        $image_name = "watch/" . date('YmdHis') . "-" . rand() . "." . $image->getClientOriginalExtension();
+
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($image, $image_name);
+
         $watch = Watch::find($request->input('id'));
-        $watch->setImage($request->input('image'));
+        $watch->setImage($image_name);
         $watch->setCategory($request->input('category_id'));
         $watch->setName($request->input('name'));
         $watch->setBrand($request->input('brand'));

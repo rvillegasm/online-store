@@ -7,24 +7,24 @@
             <div class="card-header">{{ __('watch.Update a Watch') }}</div>
 
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.watch.update') }}">
+                <form method="POST" action="{{ route('admin.watch.update') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
+                    @method('PUT')
 
                     <input type="hidden" name="id" value="{{ $data['watch']->getId() }}">
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                          <label>{{ __('watch.Image') }}</label>
-                          <div class="custom-file">
-                            <input type="file" id="customFile" class="custom-file-input @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" accept="image/png,image/jpeg" required>
+                            <label>{{ __('watch.Image') }}</label>
+                            <div class="custom-file">
+                            <input type="file" id="customFile" class="custom-file-input @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" accept="image/*">
                             <label class="custom-file-label" for="customFile" data-browse="{{ __('watch.Browse') }}">{{ __('watch.Choose file') }}</label>
-                          </div>
+                            </div>
 
                             @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
@@ -35,7 +35,7 @@
                             @endforeach
                           </select>
 
-                            @error('category')
+                            @error('category_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="form-group col-md-6">
                           <label>{{ __('watch.Description') }}</label>
-                          <textarea class="form-control @error('gender') is-invalid @enderror" name="description" rows="3" required>{{ $data['watch']->getDescription() }}</textarea>
+                          <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="3" required>{{ $data['watch']->getDescription() }}</textarea>
 
                             @error('description')
                                 <span class="invalid-feedback" role="alert">

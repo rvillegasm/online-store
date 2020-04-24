@@ -12,7 +12,7 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Item::class, 18)->create();
+        factory(Item::class, 24)->create();
     }
 }
 

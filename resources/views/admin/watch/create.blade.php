@@ -33,7 +33,7 @@
                                 @endforeach
                             </select>
 
-                            @error('category')
+                            @error('category_id')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -128,7 +128,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>{{ __('watch.Description') }}</label>
-                            <textarea class="form-control @error('gender') is-invalid @enderror" name="description" value="{{ old('description') }}" rows="3" required></textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" rows="3" required></textarea>
 
                             @error('description')
                             <span class="invalid-feedback" role="alert">
