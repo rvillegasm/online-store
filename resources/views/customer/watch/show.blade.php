@@ -9,7 +9,7 @@
     <div class="row no-gutters">
         <div class="col-md-4">
             <div class="card px-1">
-                <img class="img-thumbnail my-1" src="{{ URL::asset('storage/'.$data["watch"]->getImage()) }}" alt="">
+                <img class="img-thumbnail my-1" src="{{ $data["watch"]->getImage() }}" alt="">
             </div>
         </div>
         <div class="col-md-8">
@@ -24,10 +24,10 @@
                 <form class="container" action="{{ route('session.put', ['watchId' => $data['watch']->getId()]) }}"method="POST">
                     @csrf
                     <div class="row">
-                        <div class="col-md-2 px-1 mt-1">
+                        <div class="col-lg-2 px-1 mt-1">
                             <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{  $data['watch']->getQuantity() }}">
                         </div>
-                        <div class="col-md-2 px-0 mt-1">
+                        <div class="col-lg-2 px-0 mt-1">
                             <button type="submit" class="btn btn-dark btn-block">{{ __('watch.Add to cart') }}</button>
                         </div>
                     </div>

@@ -21,6 +21,6 @@ $factory->define(Category::class, function (Faker $faker) {
     return [
         'name' => Str::random(4),
         'image' => Str::random(20),
-        'description' => Str::random(99),
+        'description' => Str::random(40),
     ];
 });

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\ImageStorage;
 use App\Util\ImageLocalStorage;
+use App\Util\ImageS3Storage;
 
 class ImageServiceProvider extends ServiceProvider
 {

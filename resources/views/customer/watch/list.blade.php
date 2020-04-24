@@ -25,7 +25,7 @@
         @foreach($data["watches"] as $watch)
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{ URL::asset('storage/'.$watch->getImage()) }}" alt="">
+                <img class="card-img-top" src="{{ $watch->getImage() }}" alt="">
                 <div class="card-body">
                     <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}} </a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
                     <p class="card-text">{{$watch->getDescription()}}</p>

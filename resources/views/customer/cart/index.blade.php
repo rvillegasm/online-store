@@ -9,7 +9,7 @@
       <div class="card mb-1">
           <div class="row no-gutters">
             <div class="col-md-2">
-              <img class="card-img my-2" src="{{ asset('img/watch1.jpg') }}" alt="">
+              <img class="card-img my-2" src="{{ $data['watches'][$i]->getImage() }}" alt="">
             </div>
             <div class="col-md-10">
               <div class="card-body d-flex justify-content-between lh-condensed row">
