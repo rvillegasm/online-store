@@ -23,6 +23,7 @@ return [
     'Password' => 'Password',
     'Confirm Password' => 'Confirm Password',
     'Forgot Your Password?' => 'Forgot Your Password?',
+    'Login with Google' => 'Login with Google',
     'Remember Me' => 'Remember Me',
     'Logout' => 'Logout',
 

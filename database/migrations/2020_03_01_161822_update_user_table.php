@@ -16,6 +16,7 @@ class UpdateUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default(User::ROLES['customer']);
+            $table->string('google_id')->nullable();
         });
     }
 
@@ -28,6 +29,7 @@ class UpdateUserTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
+            $table->dropColumn('google_id');
         });
     }
 }
