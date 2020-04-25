@@ -13,7 +13,7 @@ use App\Comment;
 /*
     Watch Model Class
     Attributes : id, name, email, email_verified_at, password,
-                 role, remember_token, created_at, updated_at
+                 role, google_id, remember_token, created_at, updated_at
 */
 
 class User extends Authenticatable
@@ -37,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'google_id'
     ];
 
     /**
@@ -106,6 +106,16 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->attributes['role'] == User::ROLES[$role];
+    }
+
+    public function setGoogleId($google_id)
+    {
+        $this->attributes['google_id'] = $google_id;
+    }
+
+    public function getGoogleId($google_id)
+    {
+        return $this->attributes['google_id'];
     }
 
     public function getCreatedAt()

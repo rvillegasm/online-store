@@ -55,6 +55,13 @@ Route::post('/admin/order/update/{orderId}', 'Admin\OrderController@update')->na
 Auth::routes();
 
 /*
+| GOOGLE LOGIN ROUTES
+*/
+Route::get('auth/google/redirect', 'Auth\SocialAuthGoogleController@redirect')->name("google.redirect");
+Route::get('auth/google/callback', 'Auth\SocialAuthGoogleController@callback')->name("google.callback");
+
+
+/*
 | SESSION ROUTES
 */
 Route::post('/session/put/{watchId}', 'SessionController@put')->name("session.put");
