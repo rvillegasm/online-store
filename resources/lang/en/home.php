@@ -29,4 +29,5 @@ return [
     'DELIVERED' => 'DELIVERED',
     'logincomment' => 'Login if you would like to comment',
     'Are you sure?' => 'Are you sure?',
+    'Lang' => 'Lang',
 ];
