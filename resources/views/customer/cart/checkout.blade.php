@@ -64,21 +64,21 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label>Name on card</label>
-              <input type="text" class="form-control">
+              <input type="text" name="paymentInfo[owner]" class="form-control">
             </div>
             <div class="col-md-6 mb-3">
               <label>Credit card number</label>
-              <input type="text" class="form-control">
+              <input type="text" name="paymentInfo[number]" class="form-control">
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
               <label>Expiration</label>
-              <input type="text" class="form-control">
+              <input type="text" name="paymentInfo[expiration]" class="form-control">
             </div>
             <div class="col-md-3 mb-3">
               <label>CVV</label>
-              <input type="text" class="form-control" placeholder="">
+              <input type="text" name="paymentInfo[cvv]" class="form-control" placeholder="">
             </div>
             <div class="col-md-6 mb-3">
               <label>Address</label>

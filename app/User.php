@@ -37,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'google_id'
+        'name', 'email', 'password', 'google_id', 'credit'
     ];
 
     /**
@@ -116,6 +116,16 @@ class User extends Authenticatable
     public function getGoogleId($google_id)
     {
         return $this->attributes['google_id'];
+    }
+
+    public function getCredit()
+    {
+        return $this->attributes['credit'];
+    }
+
+    public function setCredit($credit)
+    {
+        $this->attributes['credit'] = $credit;
     }
 
     public function getCreatedAt()

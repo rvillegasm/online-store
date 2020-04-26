@@ -17,12 +17,14 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin'),
             'role' => User::ROLES['admin'],
+            'credit' => 20000.0,
         ]);
         User::create([
             'name' => 'user',
             'email' => 'user@gmail.com',
             'password' => Hash::make('user'),
             'role' => User::ROLES['customer'],
+            'credit' => 20000.0,
         ]);
     }
 }

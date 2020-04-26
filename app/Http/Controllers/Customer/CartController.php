@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Customer;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -12,6 +13,7 @@ use App\Item;
 use App\Order;
 use App\CustomerDetails;
 use App\Http\Controllers\SessionController;
+use App\Interfaces\Payment;
 
 class CartController extends Controller
 {
@@ -91,6 +93,7 @@ class CartController extends Controller
         $order = new Order;
         $order->setStatus("PENDING");
         $order->setUserId(auth()->user()->getId());
+        $order->save();
 
         $items = [];
         // create an item for every watch
@@ -112,13 +115,32 @@ class CartController extends Controller
                     ->with('error', 'Cannot buy that many watches of: '.$watches[$i]->getName());
             }
         }
-
-        SessionController::clear();
+        // save the items so the order can acces them at the payment stage
+        foreach ($items as $item) {
+            $item->setOrderId($order->getId());
+            $item->save();
+        }
         
         $customerDetails = CustomerDetails::create($request->only([
             "name", "adress", "phone_number", "zip"
         ]) + ["user_id" => auth()->user()->getId()]);
         
+        // Use a payment method to confirm the order
+        $paymentInterface = app(Payment::class);
+        try {
+            $paymentInterface->checkout($order, $request->input('paymentInfo'));
+        }
+        catch (Exception $exception) {
+            foreach ($items as $item) {
+                $item->delete();
+            }
+            $order->delete();
+
+            return redirect()
+                ->route('cart.index')
+                ->with('error', $exception->getMessage());
+        }
+
         // save the order
         $order->setCustomerDetails($customerDetails->getId());
         $order->save();
@@ -130,6 +152,8 @@ class CartController extends Controller
             $items[$i]->setOrderId($order->getId());
             $items[$i]->save();
         }
+
+        SessionController::clear();
         
         return redirect()
             ->route('cart.index')
