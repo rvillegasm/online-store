@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 use App\Category;
 use App\Watch;
@@ -35,12 +36,22 @@ class HomeController extends Controller
         return view('home.index')->with("data", $data);
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         try {
             $watchObject = Watch::where('name', 'like', '%'.$request->watch.'%')->firstOrFail();
             return redirect()->route('watch.show' , ['watchId' => $watchObject->getId()]);
         } catch (ModelNotFoundException $exception) {
-            return redirect()->route('home.index')->with('Not Found','Watch not found!');;
+            return redirect()->route('home.index')->with('Not Found','Watch not found!');
         }   
+    }
+
+    public function locale($locale)
+    {    
+        if (in_array($locale, ['en', 'es'])) {
+            Session::put('applocale', $locale);
+        }
+    
+        return redirect()->back();
     }
 }

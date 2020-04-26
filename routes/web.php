@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name("home.index");
+Route::get('/locale/{locale}', 'HomeController@locale')->name("home.locale");
 Route::post('/search', 'HomeController@search')->name("home.search");
 
 /*

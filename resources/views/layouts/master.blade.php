@@ -20,7 +20,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home.index') }}">MY ONLINE STORE</a>
+                <a class="navbar-brand" href="{{ route('home.index') }}">
+                    <img src="favicon.ico" width="32" height="32" class="d-inline-block align-top" alt="">
+                    ONLINE STORE
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -54,6 +57,15 @@
                             <a class="btn btn-outline-dark btn-block" href="{{ route('cart.index') }}" role="button">
                                 {{ __('home.My cart') }} <span class="badge badge-secondary">@if(session()->has('watches')) {{ count(array_unique(session()->get('watches'))) }} @else 0 @endif</span>
                             </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('home.Lang') }}
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="btn-light dropdown-item" href="{{ route('home.locale', ['locale' => 'en']) }}" role="button">en</a>
+                                <a class="btn-light dropdown-item" href="{{ route('home.locale', ['locale' => 'es']) }}"  role="button">es</a>
+                            </div>
                         </li>
                         @guest
                             <li class="nav-item">
