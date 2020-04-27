@@ -36,12 +36,7 @@
     @endfor
     @guest <small>{{ __('customer.Remember login') }}</small> @endguest
     <div class="d-flex">
-      <form action="{{ route('cart.checkout') }}" method="post">
-        @csrf
-        <button type="submit" class="btn btn-primary btn-lg ml-auto">
-          {{ __('customer.Continue checkout') }}
-        </button>
-      </form>
+      <a href="{{ route('cart.checkout') }}" class="btn btn-primary btn-lg ml-auto">{{ __('customer.Continue checkout') }}</a>
     </div>
   @else
     <div class="alert alert-info" role="alert">

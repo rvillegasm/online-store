@@ -21,7 +21,7 @@ Route::post('/search', 'HomeController@search')->name("home.search");
 Route::get('/watch/list/{categoryName}/{filter}', 'Customer\WatchController@list')->name("watch.list");
 Route::get('/watch/show/{watchId}', 'Customer\WatchController@show')->name("watch.show");
 Route::get('/cart', 'Customer\CartController@index')->name("cart.index");
-Route::post('/cart/checkout', 'Customer\CartController@checkout')->name("cart.checkout");
+Route::get('/cart/checkout', 'Customer\CartController@checkout')->name("cart.checkout");
 Route::post('/cart/process', 'Customer\CartController@process')->name("cart.process");
 Route::post('/watch/show/{watchId}/storeComment', 'Customer\CommentController@store')->name("comment.store");
 

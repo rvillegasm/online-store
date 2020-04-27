@@ -35,26 +35,26 @@
       </div>
       <div class="col-md-8 order-md-1">
         <h4 class="mb-3">{{ __('customer.Customer info') }}</h4>
-        <form action="{{ route('cart.process') }}" method="post">
+        <form action="{{ route('cart.process') }}" method="POST">
           @csrf
           <div class="mb-3">
             <label>{{ __('customer.Name') }}</label>
-            <input type="text" class="form-control" name="name" required>
+          <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
           </div>
 
           <div class="mb-3">
             <label>{{ __('customer.Address') }}</label>
-            <input type="text" class="form-control" placeholder="1234 Main St" name="adress" required>
+            <input type="text" class="form-control" placeholder="1234 Main St" name="adress" value="{{ old('adress') }}" required>
           </div>
 
           <div class="mb-3">
             <label>{{ __('customer.Phone number') }}</label>
-            <input type="number" class="form-control" name="phone_number" required>
+            <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required>
           </div>
 
           <div class="mb-3">
             <label>{{ __('customer.Zip') }}</label>
-            <input type="number" class="form-control" name="zip" required>
+            <input type="number" class="form-control" name="zip" value="{{ old('zip') }}" required>
           </div>
 
           <hr class="mb-4">
@@ -89,7 +89,9 @@
           <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">{{ __('customer.Finalize') }}</button>
         </form>
+        @include('util.message')
       </div>
+      
     </div>
   </div>  
 @endsection

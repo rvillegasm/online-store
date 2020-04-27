@@ -20,6 +20,7 @@ $factory->define(Order::class, function (Faker $faker) {
     return [
         'status' => 'PENDING',
         'user_id' => 2,
+        'total' => 1000,
         'customer_details_id' => $faker->numberBetween(1, 4),
     ];
 });
