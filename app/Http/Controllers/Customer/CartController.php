@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 
@@ -28,7 +29,7 @@ class CartController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('role:customer')->except('index');
+        $this->middleware('auth')->except('index');
     }
 
     public function index()
@@ -93,14 +94,17 @@ class CartController extends Controller
         $order = new Order;
         $order->setStatus("PENDING");
         $order->setUserId(auth()->user()->getId());
-        $order->save();
 
         $items = [];
+        $total = 0;
+        
         // create an item for every watch
         for($i = 0; $i < count($watches); $i++) {
             $item = new Item;
             $item->setProductQuantity($sessionQuantities[$i]);
-            $item->setSubTotal($watches[$i]->getPrice() * $item->getProductQuantity());
+            $sub_total = $watches[$i]->getPrice() * $item->getProductQuantity();
+            $total = $total + $sub_total;
+            $item->setSubTotal($sub_total);
             $item->setWatchId($watches[$i]->getId());
             $items[] = $item;
             // check if the quantity can be done correctly
@@ -115,31 +119,24 @@ class CartController extends Controller
                     ->with('error', 'Cannot buy that many watches of: '.$watches[$i]->getName());
             }
         }
-        // save the items so the order can acces them at the payment stage
-        foreach ($items as $item) {
-            $item->setOrderId($order->getId());
-            $item->save();
-        }
-        
-        $customerDetails = CustomerDetails::create($request->only([
-            "name", "adress", "phone_number", "zip"
-        ]) + ["user_id" => auth()->user()->getId()]);
-        
+        $order->setTotal($total);
+
         // Use a payment method to confirm the order
         $paymentInterface = app(Payment::class);
         try {
             $paymentInterface->checkout($order, $request->input('paymentInfo'));
         }
         catch (Exception $exception) {
-            foreach ($items as $item) {
-                $item->delete();
-            }
-            $order->delete();
-
             return redirect()
-                ->route('cart.index')
-                ->with('error', $exception->getMessage());
+                ->back()
+                ->with('error', $exception->getMessage())
+                ->withInput($request->input());
         }
+        
+        $customerDetails = CustomerDetails::create($request->only([
+            "name", "adress", "phone_number", "zip"
+        ]) + ["user_id" => auth()->user()->getId()]);
+        
 
         // save the order
         $order->setCustomerDetails($customerDetails->getId());

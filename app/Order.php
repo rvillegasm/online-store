@@ -12,10 +12,11 @@ class Order extends Model
     private const DATE_SHIPPED = 'date_shipped';
     private const STATUS = 'status';
     private const USER_ID = 'user_id';
+    private const TOTAL = 'total';
     private const CUSTOMER_DETAILS_ID = 'customer_details_id';
 
-    //attributes id, dateShipped, status, created_at, updated_at
-    protected $fillable = [Order::DATE_SHIPPED, Order::STATUS, Order::USER_ID];
+    //attributes id, dateShipped, status, total,  user_id, created_at, updated_at
+    protected $fillable = [Order::DATE_SHIPPED, Order::STATUS, Order::USER_ID, Order::TOTAL, Order::CUSTOMER_DETAILS_ID];
 
     public function getId()
     {
@@ -55,6 +56,16 @@ class Order extends Model
     public function setUserId($uId)
     {
         $this->attributes[Order::USER_ID] = $uId;
+    }
+
+    public function getTotal()
+    {
+        return $this->attributes[Order::TOTAL];
+    }
+
+    public function setTotal($total)
+    {
+        $this->attributes[Order::TOTAL] = $total;
     }
 
     public function getCustomerDetails()

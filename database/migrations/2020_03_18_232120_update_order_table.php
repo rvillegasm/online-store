@@ -14,6 +14,7 @@ class UpdateOrderTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
+            $table->float('total')->nullable();
             $table->bigInteger('customer_details_id')->unsigned()->nullable();
 
             $table->foreign('customer_details_id')
@@ -32,6 +33,7 @@ class UpdateOrderTable extends Migration
         Schema::table('orders', function (Blueprint $table) {
             $table->dropForeign('orders_customer_details_id_foreign');
             $table->dropColumn('customer_details_id');
+            $table->dropColumn('total');
         });
     }
 }

@@ -16,10 +16,7 @@ class CreditCardPayment implements Payment
         // $cvv = $paymentMethodInfo["cvv"];
         $creditCardOwner = $paymentMethodInfo["owner"];
 
-        $totalVal = 0;
-        foreach ($order->items as $item) {
-            $totalVal += $item->getSubTotal();
-        }
+        $totalVal = $order->getTotal();
 
         try {
             $owner = User::where('name', $creditCardOwner)->firstOrFail();
@@ -29,7 +26,7 @@ class CreditCardPayment implements Payment
         }
 
         if (CreditCardPayment::verifyCreditCart($totalVal, $owner, $order)) {
-            CreditCardPayment::pay($totalVal, $order, $owner);
+            CreditCardPayment::pay($totalVal, $owner);
         }
         else {
             throw new Exception(Lang::get("payment.Credit not valid"));
@@ -41,22 +38,14 @@ class CreditCardPayment implements Payment
     {
         // here you would actually have to call an api or something
         // to verify the card, but what we do here is just verify if
-        // the user has enough credits associated to his account    
-        if ($owner == $order->user && $owner->getCredit() >= $totalVal) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        // the user has enough credits associated to his account
+        return $owner == $order->user && $owner->getCredit() >= $totalVal;
     }
 
-    private static function pay($totalVal, $order, $owner)
+    private static function pay($totalVal, $owner)
     {
         // here you would actully pay using the credit card
         $owner->setCredit($owner->getCredit() - $totalVal);
-        $order->setStatus("SHIPPED");
-
         $owner->save();
-        $order->save();
     }
 }

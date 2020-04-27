@@ -21,7 +21,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('home.index') }}">
-                    <img src="favicon.ico" width="32" height="32" class="d-inline-block align-top" alt="">
+                    <img src="{{ asset('favicon.ico') }}" width="32" height="32" class="d-inline-block align-top" alt="">
                     ONLINE STORE
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
