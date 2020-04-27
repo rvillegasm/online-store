@@ -177,6 +177,7 @@ return [
 
         /* my providers */
         App\Providers\ImageServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
 

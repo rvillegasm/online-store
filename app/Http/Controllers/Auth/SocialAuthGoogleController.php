@@ -33,6 +33,7 @@ class SocialAuthGoogleController extends Controller
                         'email' => $googleUser->email,
                         'google_id' => $googleUser->id,
                         'password' => encrypt('123456dummy'),
+                        'credit' => 20000.0
                 ]);
 
                 Auth::login($newUser);
