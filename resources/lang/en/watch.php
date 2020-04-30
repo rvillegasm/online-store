@@ -49,5 +49,8 @@ return [
     'Update' => 'Update',
     'Update a Category' => 'Update a Category',
     'Update a Watch' => 'Update a Watch',
-    'Edit' => 'Edit'
+    'Edit' => 'Edit',
+    'FEMALE' => 'FEMALE',
+    'MALE' => 'MALE',
+    'NONE' => 'NONE',
 ];

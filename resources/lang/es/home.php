@@ -30,4 +30,5 @@ return [
     'logincomment' => 'Inicie sesión si desea comentar',
     'Are you sure?' => '¿Estás seguro?',
     'Lang' => 'Leng',
+    'Open this select menu' => 'Abre este menú de selección',
 ];

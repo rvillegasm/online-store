@@ -27,7 +27,7 @@
                         <div class="form-group col-md-6">
                             <label>{{ __('watch.Category') }}</label>
                             <select class="custom-select" name="category_id" required>
-                                <option disabled selected>Open this select menu</option>
+                                <option disabled selected>{{ __('home.Open this select menu') }}</option>
                                 @foreach ($data["categories"] as $category)
                                 <option value="{{ $category->getId() }}">{{ $category->getName() }}</option>
                                 @endforeach
@@ -114,10 +114,10 @@
                         <div class="form-group col-md-6">
                             <label>{{ __('watch.Gender') }}</label>
                             <select class="custom-select" name="gender" required>
-                                <option disabled selected>Open this select menu</option>
-                                <option value="FEMALE">FEMALE</option>
-                                <option value="MALE">MALE</option>
-                                <option value="NONE">NONE</option>
+                                <option disabled selected>{{ __('home.Open this select menu') }}</option>
+                                <option value="FEMALE">{{ __('watch.FEMALE') }}</option>
+                                <option value="MALE">{{ __('watch.MALE') }}</option>
+                                <option value="NONE">{{ __('watch.NONE') }}</option>
                             </select>
 
                             @error('gender')
