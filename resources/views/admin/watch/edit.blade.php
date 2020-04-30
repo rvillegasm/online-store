@@ -116,10 +116,10 @@
                         <div class="form-group col-md-6">
                           <label>{{ __('watch.Gender') }}</label>
                           <select class="custom-select" name="gender" required>
-                            <option value="{{ $data['watch']->getGender() }}" selected>{{ $data['watch']->getGender() }}</option>
-                            <option value="FEMALE">FEMALE</option>
-                            <option value="MALE">MALE</option>
-                            <option value="NONE">NONE</option>
+                            <option value="{{ $data['watch']->getGender() }}" selected>{{ __('watch.'.$data['watch']->getGender()) }}</option>
+                            <option value="FEMALE">{{ __('watch.FEMALE') }}</option>
+                            <option value="MALE">{{ __('watch.MALE') }}</option>
+                            <option value="NONE">{{ __('watch.NONE') }}</option>
                           </select>
 
                             @error('gender')

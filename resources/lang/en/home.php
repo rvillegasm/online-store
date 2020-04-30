@@ -30,4 +30,5 @@ return [
     'logincomment' => 'Login if you would like to comment',
     'Are you sure?' => 'Are you sure?',
     'Lang' => 'Lang',
+    'Open this select menu' => 'Open this select menu',
 ];
