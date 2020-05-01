@@ -84,7 +84,7 @@ class Foo
 ### Properties and Methods
 Properties and method names MUST always be declared in `camel case`.
 
-## Routes, Controllers and Views
+## Routes, Controllers, Models and Views
 
 ### Routes
 Every customer route MUST be named after the model that it interacts
@@ -128,11 +128,59 @@ Also, **be specific when naming variables and parameters**. If what you
 intend to declare is a variable that represents a Category Id, name
 it categoryId, and not just category.
 
+**echo** should not be written to any controller.
+
+### Models
+The following is the template for a model.
+```php
+
+/*
+    Person Model Class
+    Attributes : id, name, created_at, updated_at
+*/
+
+class Person extends Model
+{
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['name'];
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+    .
+    .
+    .
+```
+Each attribute must have its respective **get** and **set** method.
+
 ### Views
 Views, just like controllers, MUST reside within their specific
 directories depending on their relationship with customer or
 admin operations, and ideally, they should have the same name as
 the controller method that calls them.
+
+Should not be used `<?php ?>` on views.
 
 ## Specific Coding Style Rules
 Every piece of PHP code MUST follow every single rule stipulated
@@ -144,6 +192,67 @@ pipeline that connects to SonarCloud.
 In order to help you detect possible errors early, you can
 install the SonarLint extension to your code editor or IDE, as
 it will run the scan locally and tell you the results.
+
+### Whitespace
+Statements should have to breathe. In general always add blank lines between statements, unless they're a sequence of single-line equivalent operations. This isn't something enforceable, it's a matter of what looks best in its context.
+```php
+// Good
+public function getPage($url)
+{
+    $page = $this->pages()->where('slug', $url)->first();
+
+    if (! $page) {
+        return null;
+    }
+
+    if ($page['private'] && ! Auth::check()) {
+        return null;
+    }
+
+    return $page;
+}
+
+// Bad: Everything's cramped together.
+public function getPage($url)
+{
+    $page = $this->pages()->where('slug', $url)->first();
+    if (! $page) {
+        return null;
+    }
+    if ($page['private'] && ! Auth::check()) {
+        return null;
+    }
+    return $page;
+}
+```
+```php
+// Good: A sequence of single-line equivalent operations.
+public function up()
+{
+    Schema::create('users', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('name');
+        $table->string('email')->unique();
+        $table->string('password');
+        $table->rememberToken();
+        $table->timestamps();
+    });
+}
+```
+Don't add any extra empty lines between {} brackets.
+```php
+// Good
+if ($foo) {
+    $this->foo = $foo;
+}
+
+// Bad
+if ($foo) {
+
+    $this->foo = $foo;
+
+}
+```
 
 ## Branching Methods
 This project works using the trunk-based development strategy.
