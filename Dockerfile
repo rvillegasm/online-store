@@ -13,7 +13,7 @@ RUN composer install \
 RUN cp .env.ci .env
 RUN php artisan key:generate
 RUN composer dumpautoload
-RUN php artisan storage:link && php artisan migrate && php artisan db:seed
+RUN php artisan storage:link && php artisan migrate
 RUN chmod -R 777 storage
 CMD php artisan serve --port=80 --host=0.0.0.0
  
