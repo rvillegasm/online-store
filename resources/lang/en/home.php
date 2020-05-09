@@ -31,4 +31,5 @@ return [
     'Are you sure?' => 'Are you sure?',
     'Lang' => 'Lang',
     'Open this select menu' => 'Open this select menu',
+    'Partners' => 'Partners Products',
 ];

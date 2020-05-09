@@ -21,7 +21,7 @@ return [
     'watch' => 'Reloj',
     'enterWatchName' => 'Ingrese el nombre del reloj',
     'Orders' => 'Ordenes',
-    'My orders' => 'Mi ordernes',
+    'My orders' => 'Mis ordernes',
     'Save' => 'Guardar',
     'Edit' => 'Editar',
     'PENDING' => 'PENDIENTE',
@@ -31,4 +31,5 @@ return [
     'Are you sure?' => '¿Estás seguro?',
     'Lang' => 'Leng',
     'Open this select menu' => 'Abre este menú de selección',
+    'Partners' => 'Productos de Empresas Aliadas',
 ];
