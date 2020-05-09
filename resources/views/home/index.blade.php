@@ -35,48 +35,65 @@
     </div>
   </form>
   @include('util.message')
-    <!-- Categories -->
-    <h4 class="text-center my-4">{{ __('watch.Categories') }}</h4>
-    <div class="row row-cols-2 row-cols-md-5 justify-content-center categories">
-        @foreach($data["categories"] as $category)
-          <div class="col mb-4">
-            <div class="card">
-              <img class="card-img-top" src="{{ asset('img/watch1.jpg') }}" alt="">
-              <div class="card-body">
-                <h5 class="card-title text-center">
-                  <a href="{{ route('watch.list', ['categoryName' => $category->getName(), 'filter' => 'all']) }}">{{ $category->getName() }}</a>
-                </h5>
+  <!-- Categories -->
+  <h4 class="text-center my-4">{{ __('watch.Categories') }}</h4>
+  <div class="row row-cols-2 row-cols-md-5 justify-content-center categories">
+    @foreach($data["categories"] as $category)
+    <div class="col mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ asset('img/watch1.jpg') }}" alt="">
+        <div class="card-body">
+          <h5 class="card-title text-center">
+            <a href="{{ route('watch.list', ['categoryName' => $category->getName(), 'filter' => 'all']) }}">{{ $category->getName() }}</a>
+          </h5>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>
+  <!-- Bestsellers -->
+  <h4 class="text-center my-4">{{ __('home.Bestsellers') }}</h4>
+  <div class="row">
+    @foreach($data["watches"] as $watch)
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img class="card-img-top" src="{{ $watch->getImage() }}" alt="">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}}</a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
+          <p class="card-text">{{$watch->getDescription()}}</p>
+          <form class="container" action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
+            @csrf
+            <div class="row">
+              <div class="col-lg-5 px-1 mt-1">
+                <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $watch->getQuantity() }}">
+              </div>
+              <div class="col-lg-6 px-0 mt-1">
+                <button type="submit" class="btn btn-dark btn-block">{{ __('watch.Add to cart') }}</button>
               </div>
             </div>
-          </div>
-        @endforeach
-      </div>
-    <!-- Bestsellers -->
-    <h4 class="text-center my-4">{{ __('home.Bestsellers') }}</h4>
-    <div class="row">
-      @foreach($data["watches"] as $watch)
-        <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{ $watch->getImage() }}" alt="">
-                <div class="card-body">
-                    <h5 class="card-title"><a href="{{ route('watch.show' , ['watchId' => $watch->getId()]) }}"> {{$watch->getName()}}</a> <span class="badge badge-primary"> ${{$watch->getPrice()}} </span></h5>
-                    <p class="card-text">{{$watch->getDescription()}}</p>
-                      <form class="container" action="{{ route('session.put', ['watchId' => $watch->getId()]) }}" method="POST">
-                        @csrf
-                        <div class="row">
-                          <div class="col-lg-5 px-1 mt-1">
-                              <input type="number" name="quantity" id="quantity" class="form-control" value="1" min="1" max="{{ $watch->getQuantity() }}">
-                          </div>
-                          <div class="col-lg-6 px-0 mt-1">
-                              <button type="submit" class="btn btn-dark btn-block">{{ __('watch.Add to cart') }}</button>
-                          </div>
-                        </div>
-                      </form>
-                </div>
-            </div>
+          </form>
         </div>
-      @endforeach
+      </div>
     </div>
+    @endforeach
   </div>
+  <!-- External Partners -->
+  <h4 class="text-center my-4">{{ __('home.Partners')}}</h4>
+  <div class="row">
+    @foreach($data["external"] as $item)
+    <div>
+      <div class="col-md">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{$item[0]->name}} <span class="badge badge-primary"> ${{$item[0]->prize}} </span></h5>
+            <p class="card-text">{{$item[0]->description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endforeach
+  </div>
+
+</div>
 </div>
 @endsection
