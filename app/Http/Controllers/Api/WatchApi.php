@@ -10,7 +10,7 @@ class WatchApi extends Controller
 {
     public function showSport()
     {
-        $sportCategory = Category::where('name', 'K8gA')->first();
+        $sportCategory = Category::where('name', 'Sports')->first();
         if (!$sportCategory) {
             return null;
         }
