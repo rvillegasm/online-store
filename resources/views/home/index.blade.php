@@ -41,7 +41,7 @@
     @foreach($data["categories"] as $category)
     <div class="col mb-4">
       <div class="card">
-        <img class="card-img-top" src="{{ asset('img/watch1.jpg') }}" alt="">
+        <img class="card-img-top" src="{{ asset('storage/'.$category->getImage()) }}" alt="">
         <div class="card-body">
           <h5 class="card-title text-center">
             <a href="{{ route('watch.list', ['categoryName' => $category->getName(), 'filter' => 'all']) }}">{{ $category->getName() }}</a>
